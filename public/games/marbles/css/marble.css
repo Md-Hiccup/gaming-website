@@ -1,0 +1,35 @@
+.center {
+    text-align: center;
+}
+
+.errormsg {
+    color: red;
+
+}
+.normalmsg {
+    color: blue ;
+
+}
+.tab{
+    width:30%;
+    text-align: center;
+    align-content: center;
+}/*
+h1{
+    background: greenyellow;
+    color: darkred;
+    font-size: 50px;
+    font-family: "Monotype Corsiva";
+}*/
+body {
+	background : white;
+}
+.button {
+    width : 100pt;
+    font-family : courier ;
+    font-size : 20px ;
+    color : antiquewhite ;
+    font-style: normal;
+    font-weight: bolder;
+    background : green;
+}

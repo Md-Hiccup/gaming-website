@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiccup's Life</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="../js/jquery-1.12.1.min.js"></script>
+    <script src="../js/login.js"></script>
+    <style>
+        #brand-logo {
+            height: 30px;
+            width: 70px;
+        }
+        .mycontent-left {
+            border-left: 1px  #333;
+        }
+        .mycontent-right {
+            border-right: 1px  #333;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!--   Navigation bar
+    ==================================================================-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <!-- Brand and toggle get ground for better mobile display  -->
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse-1">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home" data-toggle="tooltip" data-placement="bottom"
+                   title="Hiccup's Life">
+                    <img id="brand-logo" alt="website-logo" src="../img/hiccup.jpg">
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <br><br>
+
+    <!--  Page Header  -->
+    <div class="page-header">
+        <h1> HELLO HICCUP !
+            <small>Being Smart</small>
+        </h1>
+    </div>
+
+    <br><br>
+
+    <!--   JUMBOTRON  -->
+    <div class="jumbotron  ">
+
+        <div class="row ">
+            <!--      <div class="has-error">
+                      <h3 class="control-label text-center"><b>Account Required</b><hr></h3>
+                  </div>
+                   -->
+            <!--  <div class="well well-lg col-sm-5 col-sm-offset-0 ">
+                  <div class = "has-success ">
+                      <h4 class="control-label "><b>SIGNUP FORM<hr></b></h4>
+                  </div>
+
+                  <form  class="form-horizontal">
+                          <div class="form-group ">
+                        <!--      <label class="col-xs-2 control-label" for="inputSuccess">Firstname</label>
+                            -/->  <div class="col-xs-6">
+                                  <input type="text" id=Firsname class="form-control" placeholder=" Firstname" required>
+                                  </div>
+
+                                  <div class="col-xs-6">
+                                  <input type="text" id="Lastname" class="form-control" placeholder=" Lastname" required>
+                                  </div>
+                          </div>
+                      <br>
+                          <div class="form-group ">
+                              <div class="col-xs-10">
+                                <input type="email" id="LEmail" class="form-control" placeholder=" Email Address" required>
+                            </div>
+                          </div>
+                      <br>
+                          <div class="form-group ">
+                             <div class="col-xs-10">
+                                  <input type="password" id="LPassword" class="form-control" placeholder="Password" required>
+                              </div>
+                          </div>
+                      <br>
+                         <button type="submit" class="col-lg-4 btn btn-success btn-lg " id = "signup">SignUp</button>
+                      </form>
+                  </div>
+
+                      -->
+
+            <div class="well well-lg col-sm-4 col-sm-offset-4   ">
+                <div class = "has-warning ">
+                    <h4 class="control-label "><b>LOGIN FORM<hr></b></h4>
+                </div>
+
+                <form method="get">
+                    <div class="input-group-lg form-group">
+                        <!--  <label for="inputEmail">Email</label>
+                   -->      <input type="email" class="form-control " name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <br>
+                    <div class="input-group-lg form-group ">
+                        <!--    <label for="inputPassword">Password</label>
+                         -->   <input type="password" class="form-control" name ="password" id="password" placeholder="Password" required>
+                    </div>
+                    <!--    <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div>
+                    -->    <br>
+                    <button type="submit" class="col-lg-4 btn btn-warning btn-lg " id ="login">Login</button>
+                    <br><br><hr>
+
+                    <p>Need an account? <a href="#" id="register" >Register</a></p>
+                    <!-- <p>Or go <a href="/">home</a>.</p>
+                         -->
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

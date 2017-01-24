@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiccup's Life</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="../js/jquery-1.12.1.min.js"></script>
+    <script src="../js/logout.js"></script>
+    <style>
+        #brand-logo {
+            height: 30px;
+            width: 70px;
+        }
+
+        .head {
+            color: rgba(20, 9, 62, 0.97);
+            font-size: 40pt;
+            font-style: oblique;
+            font-family: "Californian FB";
+        }
+
+        .bs-docs-footer {
+            padding-top: 20px;
+            padding-bottom: 30px;
+            margin-top: 100px;
+            color: #99979c;
+            text-align: center;
+            background-color: #2a2730
+        }
+
+        .bs-docs-footer-links {
+            padding-left: 0;
+            margin-bottom: 20px
+        }
+
+        .bs-docs-footer a {
+            color: #fff
+        }
+
+        .bs-docs-footer-links li {
+            display: inline-block
+        }
+
+        .bs-docs-footer-links li + li {
+            margin-left: 50px
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!--   Navigation bar
+    ==================================================================-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <!-- Brand and toggle get ground for better mobile display  -->
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse-1">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home" data-toggle="tooltip" data-placement="bottom"
+                   title="Hiccup's Life">
+                    <img id="brand-logo" alt="website-logo" src="../img/hiccup.jpg">
+                </a>
+
+            </div>
+
+            <!-- Collect the nav links , forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav nav-pills navbar-right ">
+                    <li role="presentation" class="active" data-toggle="tooltip" data-placement="bottom" title="Home">
+                        <a href="../html/index.html"><h4>Home</h4>
+                            <span class="sr-only"></span> </a>
+                    </li>
+
+                    <li role="presentation" data-toggle="tooltip" data-placement="bottom"
+                        title="Blog"><a href="../html/blog.html"><h4>Blog</h4></a></li>
+                    <li role="presentation" data-toggle="tooltip" data-placement="bottom"
+                        title="About Us"><a href="../html/about.html"><h4>About Us</h4></a></li>
+                    <!-- <li role="presentation" data-toggle="tooltip" data-placement="bottom"
+                         title="Log Out"><a href="#logout" id="logout" ><h4>Log Out</h4></a></li>
+                     -->
+                    <li class="dropdown" role="presentation">
+                        <a href="#games" class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom"
+                           title="Games" role="button"
+                           aria-expanded="false"><h4>Games
+                                <span class="caret"></span></h4></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="../html/tictactoe.html">Tictactoe Single</a></li>
+                            <li class="list-group-item"><a href="../html/tictactoe_double.html">Tictactoe Double</a></li>
+                            <li class="list-group-item"><a href="../html/imarble.html">Imarbe Game</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Navigation form -->
+                    <li role="presentation"><button type="submit" class="btn navbar-btn btn-lg btn-danger">Logout</button></li>
+            <!--    <li role="presentation"><button type="submit" class="btn navbar-btn btn-lg btn-danger">Signin</button></li>
+                   <form class="navbar-btn " -->
+                        <!-- <div class="form-group">
+                             <input type="text" class="form-control" placeholder="search"/>
+                         </div>
+                        </form>  -->
+                </ul>
+            </div>    <!-- navbar collapse end -->
+        </div>        <!-- container end -->
+    </nav>
+
+    <br><br><br><br>
+</div>

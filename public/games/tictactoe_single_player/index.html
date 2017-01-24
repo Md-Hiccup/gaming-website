@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="css/tic.css">
+
+</head>
+<body>
+<script src="js/lib.js"></script>
+<script src="js/tic.js"></script>
+<center>
+    <h1>Hiccup's Tic Tac Toe Game </h1>
+
+  <!--  <div id="msg">Welcome to Hiccup's Game</div>  -->
+    <table border="1" height=50% width=40%>
+        <tr>
+            <td id="1" class="square" onclick="human(this);">
+            <td id="2" class="square" onclick="human(this);">
+            <td id="3" class="square" onclick="human(this);">
+        </tr>
+
+        <tr>
+            <td id="4" class="square" onclick="human(this);">
+            <td id="5" class="square" onclick="human(this);">
+            <td id="6" class="square" onclick="human(this);">
+        </tr>
+
+        <tr>
+            <td id="7" class="square" onclick="human(this);">
+            <td id="8" class="square" onclick="human(this);">
+            <td id="9" class="square" onclick="human(this);">
+        </tr>
+        <input type="button" class="button" value="New Game" onclick="newGame();" name="newGame"/>
+        &nbsp &nbsp &nbsp &nbsp
+        <input type="button" class="button" value="Reset" onclick="reset();" name="reset"/>
+        <br>
+        <br>
+     </table>
+        <br>
+        <table border="0" width=15%>
+            <tr>
+                <th class="won">Computer Won :</th>
+                <th id="com" class="won"> (0)</th>
+            </tr>
+            <tr>
+                <th class="won">You Won :</th>
+                <th id="hum" class="won"> (0)</th>
+            </tr>
+        </table>
+
+    </table>
+    <br><br><br>
+</center>
+</body>
+</html>
