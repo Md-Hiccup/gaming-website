@@ -24,6 +24,16 @@ router.get('/about' , function(req, res){
 	res.render('about');
 	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
 });
+router.get('/login' , function(req, res){
+	console.log("in login");
+	res.render('login');
+	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
+});
+router.get('/signup' , function(req, res){
+	console.log("in signup");
+	res.render('login');
+	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
+});
 router.get('/dashboard' , function(req, res){
 	console.log("in dashboard");
 	res.render('dashboard');
