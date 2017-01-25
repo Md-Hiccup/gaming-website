@@ -36,8 +36,8 @@ router.get('/signup' , function(req, res){
 });
 router.get('/imarble' , function(req, res){
 	console.log("in imarble");
-	//res.render('imarble');
-	res.sendFile(path.join(__dirname,'../','public','html','imarble.html'));
+	res.render('imarble');
+	//res.sendFile(path.join(__dirname,'../','public','html','imarble.html'));
 });
 router.get('/tictactoe1' , function(req, res){
 	console.log("in tictactoe single");

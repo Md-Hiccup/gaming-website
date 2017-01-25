@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Marble Game</title>
     <link href="css/marble.css" rel="stylesheet"/>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body >
 <script src="js/hide.js"></script>
@@ -11,16 +12,16 @@
 <div class="center">
     <h1> Hiccup's Marble Game </h1>
 </div>  -->
-<div class="center">
-    <table align="center" class="tab">
-        <tr>
-            <th><h2>Message  : </h2></th>
-            <th><h2 class="normalmsg" id="msg">Play your turn</h2></th>
+<div class="container-fluid">
+    <table align="center" class="tab-content">
+        <tr class="row">
+            <th><h3>Message&ensp;&ensp;: </h3></th>
+            <th><h3 class="normalmsg" id="msg">&ensp;&ensp;Play your turn</h3></th>
         </tr>
     </table>
-</div>
+</div><br>
 <div class = "center">
-    <input type="button" class="button" value="Start" onclick="reset();" name="reset"/>
+    <input type="button" class="btn btn-raised btn-info" value="New Game" onclick="resetMarble();" name="reset"/>
     <br>
     <br>
 </div>

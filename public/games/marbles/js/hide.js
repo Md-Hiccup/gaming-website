@@ -19,11 +19,12 @@ table.setAttribute('width', '70%');
 
 var arr = [];
 function value() {
-    //n = prompt("Enter the matrix length ");
-    n=7;
+    n = prompt("Enter the matrix length ");
+    //n=7;
+    createTable();
 }
 function createTable() {
-    value();
+    //value();
     for (var i = 0; i < n; i++) {
         var row = getRow();
         for (var j = 0; j < n; j++) {
@@ -88,14 +89,14 @@ function modify(evt) {
             var msg = document.querySelector("#msg");
             msg.classList.remove("errormsg");
             msg.classList.add("normalmsg");
-            msg.innerHTML="Correct Move";
+            msg.innerHTML="&ensp;&ensp;Correct Move";
         }
         else {
             arr.length = 0;
             var msg = document.querySelector("#msg");
             msg.classList.remove("normalmsg");
             msg.classList.add("errormsg");
-            msg.innerHTML = "Wrong Move";
+            msg.innerHTML = "&ensp;&ensp;Wrong Move";
             console.log("second Click id Not Found");
         }
     }
@@ -190,7 +191,7 @@ function empty(evt) {
 
 
 function emptyMiddle(oldEvt, evt) {
-    var tab = document.getElementById('tabl class="tab"e');
+    var tab = document.getElementById('table');
     var oldR = oldEvt.target.row;
     var oldC = oldEvt.target.col;
     var newR = evt.target.row;
@@ -207,7 +208,7 @@ function emptyMiddle(oldEvt, evt) {
                 fill(evt);
             }
             else {
-                document.getElementById('msg').innerHTML = "Wrong Move";
+                document.getElementById('msg').innerHTML = "&ensp;&ensp;Wrong Move";
             }
 
         }
@@ -220,7 +221,7 @@ function emptyMiddle(oldEvt, evt) {
                 fill(evt);
             }
             else {
-                document.getElementById('msg').innerHTML = "Wrong Move";
+                document.getElementById('msg').innerHTML = "&ensp;&ensp;Wrong Move";
             }
         }
     }
@@ -236,7 +237,7 @@ function emptyMiddle(oldEvt, evt) {
                 fill(evt);
             }
             else {
-                document.getElementById('msg').innerHTML = "Wrong Move";
+                document.getElementById('msg').innerHTML = "&ensp;&ensp;Wrong Move";
             }
         }
         //   up movement
@@ -249,18 +250,19 @@ function emptyMiddle(oldEvt, evt) {
                 fill(evt);
             }
             else {
-                document.getElementById('msg').innerHTML = "Wrong Move";
+                document.getElementById('msg').innerHTML = "&ensp;&ensp;Wrong Move";
             }
         }
     }
 }
 
 
-function reset() {
+function resetMarble() {
     var t = document.getElementById('table');
     for (var i = 0; i < n; i++) {
         t.deleteRow('tr');
     }
     count = 0 ;
-    createTable();
+    //createTable();
+    value();
 }
