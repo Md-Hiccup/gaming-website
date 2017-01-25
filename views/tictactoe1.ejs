@@ -1,0 +1,121 @@
+<% include header %>
+<br><br><br>
+<link href="../games/tictactoe_single_player/css/tic.css" rel="stylesheet">
+
+<div class="container-fluid">
+    <h4 class="green-text darken-3 center" align="center" ><i> Tic-Tac-Toe Game for Single Player</i></h4>
+    <br>
+
+    <div class="row ">
+        <div class=" col-lg-8 col-md-6 " align="center">
+            <div class="col-md-6 col-md-push-3">
+            <table class="table-bordered" >
+            <tr>
+                <td id="1" class="square" onclick="human(this);">
+                <td id="2" class="square" onclick="human(this);">
+                <td id="3" class="square" onclick="human(this);">
+            </tr>
+
+            <tr>
+                <td id="4" class="square" onclick="human(this);">
+                <td id="5" class="square" onclick="human(this);">
+                <td id="6" class="square" onclick="human(this);">
+            </tr>
+
+            <tr>
+                <td id="7" class="square" onclick="human(this);">
+                <td id="8" class="square" onclick="human(this);">
+                <td id="9" class="square" onclick="human(this);">
+            </tr>
+            <input type="button" class="waves-effect waves-light btn btn-round blue" value="New Game" onclick="newGame();" name="newGame"/>
+            &ensp;&ensp;&ensp;
+            <input type="button" class="waves-effect waves-light btn btn-round red" value="Reset" onclick="reset();" name="reset"/>
+            <br><br><br>
+            </table>
+          <!--  <br><br><br>
+            <table class="bordered centered">
+            <thead><tr>
+                <th class="won">Computer Won :</th>
+                <th id="com" class="won"> (0)</th>
+            </tr>
+            <tr>
+                <th class="won striped">You Won &nbsp;:</th>
+                <th id="hum" class="won"> (0)</th>
+            </tr>
+            </thead>
+            </table> -->
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-info blue-grey-text">
+                <div class="panel-heading">
+                    <h1 class="panel-title"><b><h4 align="center">Tic-Tac-Toe Game</h4></b></h1>
+                </div>
+                <div class="panel-body">
+                    <h5 class="center"><b>RULES</b></h5>
+
+                    <ol type="1">
+                        <li> The Game is Played on 3*3 matrix (i.e 3 Squares by 3 Squares )</li>
+                        <br>
+                        <li> You are X , and Computer is O .</li>
+                        <br>
+                        <li> Player take turns putting their marks in empty squares.</li>
+                        <br>
+                        <li> The first player to get 3 of his marks in a top , down ,across or diagonal is the
+                            winner .
+                        </li>
+                        <br>
+                        <li> When all the 9 square are full , the game is over. If no player has 3 marks in a row then
+                            the game is tie .
+                        </li>
+                        <br>
+                    </ol>
+                    <h5 class="center"><b>Enjoy the Game</b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+
+<div class="container-fluid">
+    <div class="row ">
+        <div class="carousel">
+            <a class="carousel-item" href="#tictactoe1"><img src="img/tic.png">TicTacToe (single Player)</a>
+            <a class="carousel-item" href="tictactoe2"><img src="img/tictac.jpg">TicTacToe (Double Player)</a>
+            <a class="carousel-item" href="imarble"><img src="img/imarble1.jpg">Imarble</a>
+        </div>
+
+    </div>
+</div>
+
+<!--<div class="row">
+    <div class="container">
+        <div class="col-lg-6 col-md-6">
+            <div class="jumbotron">
+                <h2>Tic Tac Toe for Double Player </h2>
+
+                <p>It is similar to single player game but instead of computer.Another player i.e Player 2
+                    can also play . It decide who is the winner Player 1 or Player 2 .</p>
+                <a href="tictactoe_double.html" class="btn btn-danger btn-lg ">Play Now</a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="jumbotron">
+                <h2>Imarble Game</h2>
+
+                <p> It is very interesting mind puzzle game . You just have to eliminate all the marbles from the
+                    board and if you remove all marble then u win . Atlast only one marble is left ...</p>
+                <a href="imarble.html" class="btn btn-danger btn-lg ">Play Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+-->
+
+<script src="../games/tictactoe_single_player/js/lib.js"></script>
+<script src="../games/tictactoe_single_player/js/tic.js"></script>
+
+<% include footer %>

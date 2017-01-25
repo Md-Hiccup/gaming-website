@@ -34,6 +34,22 @@ router.get('/signup' , function(req, res){
 	res.render('login');
 	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
 });
+router.get('/imarble' , function(req, res){
+	console.log("in imarble");
+	res.render('imarble');
+	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
+});
+router.get('/tictactoe1' , function(req, res){
+	console.log("in tictactoe single");
+	res.render('tictactoe1');
+	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
+});
+router.get('/tictactoe2' , function(req, res){
+	console.log("in tictactoe double");
+	res.render('tictactoe2');
+	//res.sendFile(path.join(__dirname,'../','public','html','index.html'));
+});
+
 router.get('/dashboard' , function(req, res){
 	console.log("in dashboard");
 	res.render('dashboard');

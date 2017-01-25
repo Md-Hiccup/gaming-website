@@ -19,7 +19,8 @@ table.setAttribute('width', '70%');
 
 var arr = [];
 function value() {
-    n = prompt("Enter the matrix length ");
+    //n = prompt("Enter the matrix length ");
+    n=7;
 }
 function createTable() {
     value();
@@ -189,7 +190,7 @@ function empty(evt) {
 
 
 function emptyMiddle(oldEvt, evt) {
-    var tab = document.getElementById('table');
+    var tab = document.getElementById('tabl class="tab"e');
     var oldR = oldEvt.target.row;
     var oldC = oldEvt.target.col;
     var newR = evt.target.row;

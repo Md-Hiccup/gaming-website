@@ -20,7 +20,7 @@
 
       <!--  <p>Code licensed <a rel=license href="https://github.com/Md-Hiccup" target=_blank></a>, docs
             <a rel=license href=https://creativecommons.org/licenses/by/3.0/ target=_blank>CC BY 3.0</a>.</p></div>     -->
-            <p><b class="white-text"> © 2016-17 Copyright Text</b>
+            <p><b class="white-text"> © 2016-17 Copyright</b>
 
 
     </div>
@@ -32,13 +32,23 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
+    $(document).ready(function() {
+        $('.carousel').carousel({
+            padding: 200
+        });
+        autoplay()
+        function autoplay() {
+            $('.carousel').carousel('next');
+            setTimeout(autoplay, 3500);
+        }
+    });
 </script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery-1.12.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/materialize.js"></script>
-<script src="../js/init.js"></script>
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/init.js"></script>
 </body>
 </html>
