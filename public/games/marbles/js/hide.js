@@ -10,25 +10,37 @@
 var table = document.createElement('table');
 var count = 0;
 var n;
-var oldEvt;
+var oldEvt, oldId;
 table.setAttribute('id', 'table');
 table.setAttribute('border', 2);
 table.setAttribute('align', 'center');
 table.setAttribute('height', '500pt');
-table.setAttribute('width', '70%');
+table.setAttribute('width', '700pt');
 
-var arr = [];
+var arr = [] , arr1 = [];
 function value() {
-    n = prompt("Enter the matrix length ");
-    //n=7;
-    createTable();
+   // n = prompt("Enter the matrix length ");
+    n=5;
+    if(n>21){
+        console.log("n = ", n);
+        alert("Enter the limit in between 4 to 20")
+    }
+    else if(n<4){
+        console.log("n = ", n);
+        alert("Enter the limit in between 4 to 20")
+    }
+    else{
+        createTable();
+        count = 1;
+    }
 }
 function createTable() {
-    //value();
+   // value();
     for (var i = 0; i < n; i++) {
         var row = getRow();
         for (var j = 0; j < n; j++) {
             if ((i + 1 == Math.ceil(n / 2)) && (j + 1 == Math.ceil(n / 2))) {
+                // empty middle matrix element
                 var col = document.createElement('th');
                // col.innerHTML = "";
                 col.setAttribute('id', count);
@@ -43,7 +55,7 @@ function createTable() {
 
             }
             count++;
-            row.appendChild(col);;
+            row.appendChild(col);
         }
         table.appendChild(row);
     }
@@ -60,7 +72,7 @@ function getRow() {
 function getCol(val, r, c) {
     var ab = document.createElement('th');
     ab.setAttribute('border', 2);
-    ab.setAttribute('bgcolor', 'palered')
+    ab.setAttribute('bgcolor', 'palered');
 //    ab.innerHTML = val;
 
     ab.setAttribute('class', 'square');
@@ -98,14 +110,19 @@ function modify(evt) {
             msg.classList.add("errormsg");
             msg.innerHTML = "&ensp;&ensp;Wrong Move";
             console.log("second Click id Not Found");
+            if(oldEvt.target.bgColor == 'red'){
+                colr=document.getElementById(oldEvt.target.id);
+                colr.setAttribute('bgColor','palered');
+            }
         }
     }
     else if (arr.length == 0) {
         searchEmpty(evt);
         oldEvt = evt;
-        console.log("first Click" + oldEvt.target.id);
-    }
-    else {
+        console.log("first Click " + oldEvt.target.id);
+        console.log(oldEvt.target);
+        }
+     else {
         console.log("unknown error" + id);
     }
 }
@@ -139,31 +156,61 @@ function searchEmpty(evt) {
             // colour(r - 2, j, 'red', id);
 
             var element = table.getElementsByTagName('tr')[r - 2].childNodes[c];
-            if (element.myId == "")
-                arr.push(element.id);
+            var ele = table.getElementsByTagName('tr')[r - 1].childNodes[c];
+            if (element.myId == ""){
+                if(ele.bgColor != 'white'){
+                    console.log("bgcolor : ",ele.bgColor);
+                    arr.push(element.id);
+                }
+            }
         }
         if (r + 2 < n && r + 2 >= 0) {
             //   alert(" ( Down ) " + "row : " + (r + 2) + " col : " + j);
             //     colour(r + 2, j, 'brown', id);
             var element = table.getElementsByTagName('tr')[r + 2].childNodes[c];
-            if (element.myId == "")
-                arr.push(element.id);
+            var ele = table.getElementsByTagName('tr')[r + 1].childNodes[c];
+            if (element.myId == ""){
+                if(ele.bgColor != 'white'){
+                    console.log("bgcolor : ",ele.bgColor);
+                    arr.push(element.id);
+                }
+            }
         }
 
         if (c - 2 < n && c - 2 >= 0) {
             // alert(" ( Left ) " + "row : " + i + " col : " + (c - 2));
             //   colour(i, c - 2, 'green', id);
             var element = table.getElementsByTagName('tr')[r].childNodes[c - 2];
-            if (element.myId == "")
+            var ele = table.getElementsByTagName('tr')[r].childNodes[c - 1];
+            if (element.myId == "") {
+                if (ele.bgColor != 'white'){
+                    console.log("bgcolor : ", ele.bgColor);
                 arr.push(element.id);
-
+                }
+            }
         }
         if (c + 2 < n && c + 2 >= 0) {
             // alert(" ( Right ) " + "row : " + i + " col : " + (c + 2));
             // colour(i, c + 2, 'blue', id);
             var element = table.getElementsByTagName('tr')[r].childNodes[c + 2];
+            var ele = table.getElementsByTagName('tr')[r].childNodes[c + 1];
             if (element.myId == ""){
-                arr.push(element.id);
+                if(ele.bgColor != 'white'){
+                    console.log("bgcolor : ",ele.bgColor);
+                    arr.push(element.id);
+                }
+            }
+        }
+        if(arr.length == 0){
+            oldId = evt.target.id;
+            console.log("array Length = 0 "+ oldId);
+        }else if(arr.length >0){
+            if (evt.target.bgColor == 'palered') {
+                colr = document.getElementById(evt.target.id);
+                colr.setAttribute('bgColor', 'red');
+            }else if (evt.target.bgColor == 'red') {
+                colr = document.getElementById(evt.target.id);
+                colr.setAttribute('bgColor', 'palered');
             }
         }
     }
@@ -259,10 +306,12 @@ function emptyMiddle(oldEvt, evt) {
 
 function resetMarble() {
     var t = document.getElementById('table');
-    for (var i = 0; i < n; i++) {
-        t.deleteRow('tr');
+    if(count == 1){
+        for (var i = 0; i < n; i++) {
+            t.deleteRow('tr');
+        }
+        count = 0;
     }
-    count = 0 ;
     //createTable();
     value();
 }
