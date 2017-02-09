@@ -1,4 +1,8 @@
-<% include header %>
+<% if( head == '1' ){ %>
+<%  include header%>
+<% } else { %>
+<% include headerlogin %>
+<% } %>
 <br><br><br>
 <link href="../games/marbles/css/marble.css" rel="stylesheet"/>
 <script src="../games/marbles/js/hide.js"></script>

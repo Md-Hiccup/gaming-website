@@ -1,4 +1,8 @@
-<% include header %>
+<% if( head == '1' ){ %>
+<%  include header%>
+<% } else { %>
+<% include headerlogin %>
+<% } %>
 <br><br><br>
 <link href="../games/tictactoe_double_player/css/mine.css" rel="stylesheet">
 <body onload="Gamestart()">

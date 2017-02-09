@@ -5,20 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('hiccup.db');
 var flash = require('connect-flash');
-
-var session = require('express-session');
+//var session = require('express-session');
+//var passport = require('passport');
+//var mysql = require('mysql');
 
 var routes = require('./routes/index');
 var auth = require('./routes/auth');
+//var configDb = require('./db.js');
+
 //var users = require('./routes/users');
 /*
 var expressSession = require('express-session');
-var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-
 app.use(passport.initialize());
 app.use(passport.session());
 */
@@ -44,15 +43,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session({
+/*app.use(session({
   cookieName: 'session',
   resave : true ,
   saveUninitialized: true,
-  secret: 'express-session',
+  secret: 'express-session'
  // duration: 30 * 60 * 1000,
  // activeDuration: 5 * 60 * 1000
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+*/
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', routes);
 app.use('/auth' , auth);

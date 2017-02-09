@@ -1,4 +1,8 @@
-<% include header%>
+<% if( headMain == '1' ){ %>
+<%  include header%>
+<% } else { %>
+<% include headerlogin %>
+<% } %>
 <br><br><br>
 <div class="container-fluid">
     <div class="col-md-5 col-md-push-1">

@@ -1,4 +1,8 @@
-<% include headerlogin%>
+<% if( headMain == '0' ){ %>
+<%  include headerlogin%>
+<% } else { %>
+<% include header %>
+<% } %>
 <br>
 <div class="container-fluid">
     <div class=" col-md-5">
@@ -22,19 +26,19 @@
                 <div class="row">
                     <div class="input-field col s12 light-green-text">
                         <i class="material-icons prefix">email</i>&ensp;
-                        <input id="email" type="email" class="validate">
+                        <input id="email" type="email" name='email' class="validate">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 light-green-text">
                         <i class="material-icons prefix">lock</i>&ensp;
-                        <input id="password" type="password" class="validate">
+                        <input id="password" type="password" name='password' class="validate">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row center">
-                    <a href="" class="light-green waves-effect waves-light white-text btn-round btn-lg" >SIGN UP</a>
+                    <a id="signup" class="light-green waves-effect waves-light white-text btn-round btn-lg" >SIGN UP</a>
                 </div>
             </form>
         </div>
@@ -49,19 +53,19 @@
                 <div class="row">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">email</i>&ensp;
-                        <input id="email" type="email" class="validate">
+                        <input id="emailLogin" type="email" name="email" class="validate">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">lock</i>&ensp;
-                        <input id="password" type="password" class="validate">
+                        <input id="passwordLogin" type="password" name="password" class="validate">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row center">
-                    <a href="" class="blue-grey waves-effect waves-light white-text btn-round btn-lg" >LOGIN</a>
+                    <a id="login" class="blue-grey waves-effect waves-light white-text btn-round btn-lg" >LOGIN</a>
                 </div>
             </form>
         </div>

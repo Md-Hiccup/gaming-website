@@ -9,7 +9,7 @@
  */
 var table = document.createElement('table');
 var count = 0;
-var n;
+var n ,totalMoves=0;
 var oldEvt, oldId;
 table.setAttribute('id', 'table');
 table.setAttribute('border', 2);
@@ -97,6 +97,8 @@ function modify(evt) {
             //fill(evt);
             emptyMiddle(oldEvt, evt);
             arr.length = 0;
+            totalMoves = totalMoves+1;
+            console.log("total moves : "+totalMoves);
             console.log("Second Click" + evt.target.id);
             var msg = document.querySelector("#msg");
             msg.classList.remove("errormsg");
@@ -311,6 +313,7 @@ function resetMarble() {
             t.deleteRow('tr');
         }
         count = 0;
+        totalMoves = 0 ;
     }
     //createTable();
     value();

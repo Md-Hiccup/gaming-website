@@ -1,5 +1,9 @@
-<% include header %>
-    <br><br>
+<% if( headMain == '1' ){ %>
+    <%  include header%>
+<% } else { %>
+    <% include headerlogin %>
+<% } %>
+<br><br>
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
@@ -15,7 +19,7 @@
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img src="./img/background.jpg" alt="Unsplashed background img 1"></div>
+        <div class="parallax"><img src="./img/game.jpg" alt="Unsplashed background img 1"></div>
     </div>
 
     <div class="container">
@@ -62,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="./img/background1.jpg" alt="Unsplashed background img 1"></div>
+        <div class="parallax"><img src="./img/game1.jpg" alt="Unsplashed background img 1"></div>
     </div>
 
     <!-- START THE FEATURETTES
@@ -76,12 +80,12 @@
                 <img class="activator" src="img/imarble1.jpg">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">I Marble
+                <span class="card-title activator grey-text text-darken-4">I-Marble
                     <i class="material-icons teal-text right">more_vert</i></span>
                 <h5><small>Have Talent so Take Challenge</small></h5>
             </div>
             <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">I Marble<i class="material-icons right">close</i></span>
+                <span class="card-title grey-text text-darken-4">I-Marble<i class="material-icons right">close</i></span>
                 <hr><p>IMarble game is the famous game . It looks very simple game but it is very complicated .
                     Only You just have to done is eliminating all the marble and at last only one marble is left .</p>
             </div>
