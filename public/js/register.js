@@ -51,7 +51,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#logout").click(function(){
+  /*  $("#logout").click(function(){
         //email = $('#emailLogin').val();
         //pass = $('#passwordLogin').val();
         //if(email !=='' && pass !== ''){
@@ -70,5 +70,5 @@ $(document).ready(function() {
                     }
                 });
         //}
-    });
+    });*/
 });

@@ -47,7 +47,7 @@ router.get('/logout', function(req, res){
     console.log("headMain " ,global.headMain);
     if(global.headMain == 0) {
         global.headMain = 1;
-        res.render('logout', {headMain : '1'});
+        res.render('index', {headMain : '1'});
     }console.log("headMain : : ", global.headMain);
 });
 router.get('/imarble' , function(req, res){
