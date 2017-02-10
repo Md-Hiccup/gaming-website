@@ -3,44 +3,52 @@ var path = require('path');
 var passport = require('passport') ;
 var router = express.Router();
 var session = require('express-session');
-var routes = require('./auth.js');
+//var routes = require('./auth.js');
 /*
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });*/
-//global.headMain = 1;
+global.headMain = 1;
 
 router.get('/' , function(req, res){
 	console.log("in index");
-	console.log("headMain" , routes.headMain);
-	if(routes.headMain==0)
+	console.log("headMain" , global.headMain);
+	if(global.headMain==0)
 		res.render('index' ,{headMain : '0'});
 	else
 		res.render('index' ,{headMain : '1'});
 });
 router.get('/blog' , function(req, res){
 	console.log("in blog");
-	console.log("headMain" , routes.headMain);
-	if(routes.headMain==0)
+	console.log("headMain" , global.headMain);
+	if(global.headMain==0)
 		res.render('blog' ,{headMain : '0'});
 	else
 		res.render('blog' ,{headMain : '1'});
 });
 router.get('/about' , function(req, res){
 	console.log("in about");
-	console.log("headMain" , routes.headMain);
-	if(routes.headMain==0)
+	console.log("headMain" , global.headMain);
+	if(global.headMain==0)
 		res.render('about' ,{headMain : '0'});
 	else
 		res.render('about' ,{headMain : '1'});
 });
 router.get('/login' , function(req, res){
 	console.log("in login");
-	console.log("headMain" , routes.headMain);
+	console.log("headMain" , global.headMain);
 	//headMain = 0;
-	if(routes.headMain == 1) {
+	if(global.headMain == 1) {
 		res.render('login', {headMain: '0'});
-	}console.log("headMain : : ",routes.headMain);
+	}console.log("headMain : : ",global.headMain);
+});
+router.get('/logout', function(req, res){
+    console.log("in logout");
+    console.log("headMain " ,global.headMain);
+    if(global.headMain == 0) {
+        global.headMain = 1;
+        res.render('logout', {headMain : '1'});
+    }console.log("headMain : : ", global.headMain);
 });
 router.get('/imarble' , function(req, res){
 	console.log("in imarble");
@@ -90,4 +98,3 @@ router.get('/logout' , function(req ,res ) {
 });
 */
 module.exports = router;
-module.exports.headMain = '1' ;

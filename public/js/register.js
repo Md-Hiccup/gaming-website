@@ -41,13 +41,34 @@ $(document).ready(function() {
                 },
                 function(data){
                     if(data.status == '200'){
-                        alert(' render the home page');
-                        window.location.href='/about';
+                      //  alert(' render the home page');
+                        window.location.href='/';
                     } else {
-                        alert('error !!!!!'+data.status);
+                      //  alert('error !!!!!'+data.status);
                         window.location.href = '/error';
                     }
                 });
         }
+    });
+
+    $("#logout").click(function(){
+        //email = $('#emailLogin').val();
+        //pass = $('#passwordLogin').val();
+        //if(email !=='' && pass !== ''){
+            $.get("/logout" ,
+                {
+                  //  emailLogin : email,
+                  //  passwordLogin : pass
+                },
+                function(data){
+                    if(data.status == '200'){
+                        //  alert(' render the home page');
+                        window.location.href='/';
+                    } else {
+                        //  alert('error !!!!!'+data.status);
+                        window.location.href = '/error';
+                    }
+                });
+        //}
     });
 });
