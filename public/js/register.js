@@ -52,13 +52,12 @@ $(document).ready(function() {
     });
 
   /*  $("#logout").click(function(){
-        //email = $('#emailLogin').val();
+        email = $('#emailLogin').val();
         //pass = $('#passwordLogin').val();
-        //if(email !=='' && pass !== ''){
-            $.get("/logout" ,
+            //if(email !==''){
+            $.delete("auth/logout" ,
                 {
-                  //  emailLogin : email,
-                  //  passwordLogin : pass
+                    emailLogin : email
                 },
                 function(data){
                     if(data.status == '200'){

@@ -28,7 +28,8 @@ router.post('/login' , function(req ,res){
                     if(req.body.emailLogin == rows[0].Email)
                     {   if(req.body.passwordLogin == rows[0].Password){
                         global.headMain = 0;
-                        console.log("dddd " +global.headMain);
+                        conn.query("insert into userLogin (email , password) values (?, ?)",[req.body.emailLogin ,req.body.passwordLogin]);
+                        // console.log("dddd " +global.headMain);
                         res.json({"status" : "200" , "data" : "Login successful"});
                         }
                     }
@@ -57,8 +58,9 @@ router.post('/signup' , function( req , res ){
             }
         });
 });
+
 /*
-router.get('/logout' , function( req , res ){
+router.delete('/logout' , function( req , res ){
     //   res.json("Register Page");
     //console.log(req.body.first_name+' '+req.body.last_name+' '+req.body.email+ " " +req.body.password);
     conn.query("delete from userLogin where email = ?" ,
