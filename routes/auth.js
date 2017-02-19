@@ -9,13 +9,14 @@ var path = require('path');
 var express = require('express');
 var router = express.Router();
 
+
 router.post('/login' , function(req ,res){
    // sess = req.session;
    // sess.email=req.body.email;
     // res.end('done');
    // routes.headMain = '1' ;
     console.log("Authentication "+req.body.emailLogin+" "+global.headMain);
-    conn.query("Select Email , Password from userSignup where email = ? AND password = ? ",
+    conn.query("Select firstname , lastname , Email , Password from userSignup where email = ? AND password = ? ",
         [ req.body.emailLogin ,req.body.passwordLogin ],
         function (err , rows) {
         console.log(rows.length) ;   //console.log(rows[0].Email) ;
@@ -28,6 +29,7 @@ router.post('/login' , function(req ,res){
                     if(req.body.emailLogin == rows[0].Email)
                     {   if(req.body.passwordLogin == rows[0].Password){
                         global.headMain = 0;
+                        userName = rows[0].firstname +" "+rows[0].lastname;
                         conn.query("insert into userLogin (email , password) values (?, ?)",[req.body.emailLogin ,req.body.passwordLogin]);
                         // console.log("dddd " +global.headMain);
                         res.json({"status" : "200" , "data" : "Login successful"});
