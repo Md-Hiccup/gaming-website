@@ -104,6 +104,13 @@ function modify(evt) {
             msg.classList.remove("errormsg");
             msg.classList.add("normalmsg");
             msg.innerHTML="&ensp;&ensp;Correct Move";
+            var score = document.querySelector("#score");
+            //score.classList.remove("errormsg");
+            score.classList.add("scoreMsg");
+            score.innerHTML="&ensp;&ensp;"+totalMoves+"/"+"23";
+            if(totalMoves==23){
+                alert("Gajab Chachaaa");
+            }
         }
         else {
             arr.length = 0;
@@ -315,6 +322,15 @@ function resetMarble() {
         count = 0;
         totalMoves = 0 ;
     }
+    var msg = document.querySelector("#msg");
+    msg.classList.remove("errormsg");
+    msg.classList.remove("normalmsg");
+   // msg.setAttribute('bgcolor','green');
+    msg.innerHTML="&ensp;&ensp;Play Your Turn";
+    var score = document.querySelector("#score");
+    //score.classList.remove("errormsg");
+    score.classList.remove("scoreMsg");
+    score.innerHTML="&ensp;&ensp;"+totalMoves+"/"+"23";
     //createTable();
     value();
 }

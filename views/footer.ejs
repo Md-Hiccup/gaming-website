@@ -20,7 +20,7 @@
                 </a>
             </li><!-- <li><a href="../html/about.html">About</a></li> -->
 
-        <p class="pull-right"><a href="#" class="btn-floating btn-large orange darken-1"><i class="material-icons right">navigation</i></a></p>
+        <p class="pull-right"><a href="#" class="btn-floating btn-sm green"><i class="material-icons right">navigation</i></a></p>
         </ul>
      <!--   <p>&copy; 2016 Hiccup's life Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>  -->
 
@@ -44,12 +44,12 @@
     });
     $(document).ready(function() {
         $('.carousel').carousel({
-            padding: 200
+            padding: 100
         });
         autoplay()
         function autoplay() {
             $('.carousel').carousel('next');
-            setTimeout(autoplay, 3500);
+            setTimeout(autoplay, 5000);
         }
     });
 </script>

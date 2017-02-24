@@ -55,6 +55,8 @@ router.post('/signup' , function( req , res ){
             }
             else {
                 console.log('successful');
+                global.headMain = 0;
+                userName = req.body.first_name +" "+req.body.last_name;
                 //res.end('done');
                  res.json({"status" : "200" , "data" : "Successfully inserted"});
             }
