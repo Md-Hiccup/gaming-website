@@ -25,10 +25,12 @@ var userLogin = "create table if not exists userLogin ( loginId int PRIMARY KEY 
     "FOREIGN KEY(Email , Password) REFERENCES userSignup( Email , Password));";
 
 var userSignup = "create table if not exists userSignup ( signupId int PRIMARY KEY AUTO_INCREMENT , FirstName varchar(20) NOT NULL , " +
-    "LastName varchar(20) NOT NULL, Email varchar(20) NOT NULL , Password varchar(20) NOT NULL);";
- 
-/*var scoreBoard = "create table if not exists scoreBoard ( loginId int , Email varchar(20) NOT NULL ," +
-    " Rank int ,  Score int , FOREIGN KEY ( loginId ) REFERENCES userLogin (loginId ));";
+    "LastName varchar(20), Email varchar(20) NOT NULL , Password varchar(20) NOT NULL);";
+
+var gameBoard = "create table if not exists gameBoard (gameId int PRIMARY KEY AUTO_INCREMENT , gameName varchar(20) NOT NULL);";
+
+var scoreBoard = "create table if not exists scoreBoard ( signupId int , gameId int , " +
+    " Rank int ,  Score int, FOREIGN KEY(signupId) REFERENCES userSignup(signupId), FOREIGN KEY (gameId) REFERENCES gameBoard(gameId))";
 
 /*var session = "create temp table if not exists session ( Id INT PRIMARY KEY AUTO_INCREMENT , Email varchar(20) NOT NULL ," +
     "Login REAL , Logout REAL , Data REAL ;)";*/
@@ -40,6 +42,14 @@ connection.query(userLogin,function(error , results, fields){
 connection.query(userSignup, function(error){
     if (error) throw error;
     console.log('userSignup table is created');
+});
+connection.query(gameBoard, function(error){
+    if (error) throw error;
+    console.log('gameBoard table is created');
+});
+connection.query(scoreBoard, function(error){
+    if (error) throw error;
+    console.log('scoreBoard table is created');
 });
 
 module.exports = connection ;

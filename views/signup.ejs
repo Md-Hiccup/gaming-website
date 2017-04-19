@@ -1,0 +1,51 @@
+<% if( headMain == '0' ){ %>
+<%  include headerlogin%>
+<% } else { %>
+<% include header %>
+<% } %>
+<br>
+<div class="container-fluid">
+    <div class="col-lg-5 col-lg-offset-3    ">
+        <div class="card">
+            <div class="row">
+                <div class = "ct-green">
+                    <h5 class="control-label center"><b>Signup Form<hr></b></h5>
+                </div>
+                <form class="col s12" method="post">
+                    <div class="row form-group">
+                        <div class="input-field col s6 light-green-text">
+                            <i class="material-icons prefix">account_circle</i>&ensp;
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6 light-green-text">
+                            <i class="material-icons prefix"></i>&ensp;
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="input-field col s12 light-green-text">
+                            <i class="material-icons prefix">email</i>&ensp;
+                            <input id="email" type="email" name='email' class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="input-field col s12 light-green-text">
+                            <i class="material-icons prefix">lock</i>&ensp;
+                            <input id="password" type="password" name='password' class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <!--  <a id="signup" class="light-green waves-effect waves-light white-text btn-round btn-lg" >SIGN UP</a>-->
+                        <button type="submit" id='signup'  class="light-green waves-effect waves-light white-text btn-round btn-lg">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include footer %>

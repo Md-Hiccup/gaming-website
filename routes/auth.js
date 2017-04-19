@@ -1,14 +1,21 @@
 /**
  * Created by ubuntu on 21/6/16.
  */
-var mysql = require('mysql');
+//var mysql = require('mysql');
 var conn = require('./db.js');
-//var session = require('express-session');
 //var flash = require('connect-flash');
 var path = require('path');
 var express = require('express');
 var router = express.Router();
 
+router.get('/login' , function(req, res){
+    console.log("in login");
+    console.log("headMain" , global.headMain);
+    //headMain = 0;
+    if(global.headMain == 1) {
+        res.render('login', {headMain: '0'});
+    }console.log("headMain : : ",global.headMain);
+});
 
 router.post('/login' , function(req ,res){
    // sess = req.session;
@@ -33,7 +40,9 @@ router.post('/login' , function(req ,res){
                         conn.query("insert into userLogin (email , password) values (?, ?)",[req.body.emailLogin ,req.body.passwordLogin]);
                         // console.log("dddd " +global.headMain);
                         res.json({"status" : "200" , "data" : "Login successful"});
-                        }
+                        }else{
+                        res.json({'status' : '500' , 'data': 'wrong password'});
+                         }
                     }
                     else {
                         res.json({"status" : "500" , "data" : "Login failed"});
@@ -44,21 +53,33 @@ router.post('/login' , function(req ,res){
  });
 
 
+router.get('/signup' , function(req, res){
+    console.log("in signup");
+    console.log("headMain" , global.headMain);
+    //headMain = 0;
+    if(global.headMain == 1) {
+        res.render('signup', {headMain: '0'});
+    }console.log("headMain : : ",global.headMain);
+});
+
 router.post('/signup' , function( req , res ){
  //   res.json("Register Page");
       console.log(req.body.first_name+' '+req.body.last_name+' '+req.body.email+ " " +req.body.password);
     conn.query("insert into userSignup ( firstname , lastname , email , password ) values ( ? , ? , ? , ? )" ,
-        [ req.body.first_name , req.body.last_name , req.body.email , req.body.password ] , function(err , rows){
+        [ req.body.first_name , req.body.last_name , req.body.email , req.body.password ] ,
+        function(err , rows){
+        //console.log(rows.length) ;
             if(err){
                 console.log('Failed ' + err);
-                res.json({"status" : "500" , "data" : "Insertion Failed"});
+                res.json({"status" : err.status , "data" : err.message , "stack": err.stack});
             }
             else {
-                console.log('successful');
                 global.headMain = 0;
                 userName = req.body.first_name +" "+req.body.last_name;
+                console.log('successful');
                 //res.end('done');
-                 res.json({"status" : "200" , "data" : "Successfully inserted"});
+                 res.json({"status" : "200" , "data" : "Successfully Singup"});
+
             }
         });
 });

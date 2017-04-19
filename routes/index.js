@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var passport = require('passport') ;
+//var passport = require('passport') ;
 var router = express.Router();
 var session = require('express-session');
 //var routes = require('./auth.js');
@@ -34,13 +34,11 @@ router.get('/about' , function(req, res){
 	else
 		res.render('about' ,{headMain : '1'});
 });
-router.get('/login' , function(req, res){
-	console.log("in login");
-	console.log("headMain" , global.headMain);
-	//headMain = 0;
-	if(global.headMain == 1) {
-		res.render('login', {headMain: '0'});
-	}console.log("headMain : : ",global.headMain);
+
+// Why function call this post method from processing auth/signp. why it is necessary to include post method in index.js
+router.post('/login', function(req, res){
+	console.log("post login ");
+	//res.redirect('/about');
 });
 router.get('/logout', function(req, res){
 	console.log("in logout");
@@ -56,7 +54,6 @@ router.get('/imarble' , function(req, res){
 });
 router.get('/tictactoe1' , function(req, res){
 	console.log("in tictactoe single");
-	res.render('tictactoe1');
 });
 router.get('/tictactoe2' , function(req, res){
 	console.log("in tictactoe double");

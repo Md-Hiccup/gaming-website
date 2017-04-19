@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
 var flash = require('connect-flash');
-//var session = require('express-session');
+var session = require('express-session');
 //var passport = require('passport');
 //var mysql = require('mysql');
 
@@ -16,7 +16,6 @@ var auth = require('./routes/auth');
 
 //var users = require('./routes/users');
 /*
-var expressSession = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 app.use(passport.initialize());
 app.use(passport.session());
@@ -26,10 +25,6 @@ app.use(passport.session());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
 
 // public static file
 app.set('images' , path.join(__dirname , 'public', 'images'));
@@ -41,9 +36,10 @@ app.set('html' , path.join(__dirname , 'public' , 'html'));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-/*app.use(session({
+app.use(flash());
+app.use(session({
   cookieName: 'session',
   resave : true ,
   saveUninitialized: true,
@@ -51,7 +47,7 @@ app.use(cookieParser());
  // duration: 30 * 60 * 1000,
  // activeDuration: 5 * 60 * 1000
 }));
-*/
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', routes);
@@ -88,6 +84,11 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
 });
 
 

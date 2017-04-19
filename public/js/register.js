@@ -9,7 +9,7 @@ $(document).ready(function() {
         pass = $("#password").val();
         // console.log(fname );
         if (fname !== "" && lname !=="" && email !== "" && pass !== "") {
-            console.log("helloooo");
+           // console.log("helloooo");
             $.post("/auth/signup",
                 {
                     first_name: fname,
@@ -20,10 +20,11 @@ $(document).ready(function() {
                 function (data) {
                     console.log(data);
                     if (data.status == '200') {
-                        alert("Email is registered");
-                        window.location.href = "/";
+                        alert(data.data);
+                        //document.loacation='/';
+                        window.location.href = '/auth/login';
                     } else {
-                        alert('error !!!!!'+data.status);
+                        //alert('error !!!!!'+data.status);
                         window.location.href = '/error';
                     }
                 });

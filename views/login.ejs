@@ -5,61 +5,21 @@
 <% } %>
 <br>
 <div class="container-fluid">
-    <div class="col-lg-5">
+    <div class="col-md-5 col-md-offset-3">
         <div class="card">
-        <div class="row">
-            <div class = "ct-green">
-                <h5 class="control-label center"><b>Signup Form<hr></b></h5>
-            </div>
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s6 light-green-text">
-                        <i class="material-icons prefix">account_circle</i>&ensp;
-                        <input id="first_name" type="text" class="validate">
-                        <label for="first_name">First Name</label>
-                    </div>
-                    <div class="input-field col s6 light-green-text">
-                        <i class="material-icons prefix"></i>&ensp;
-                        <input id="last_name" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
-                    </div>
+            <div class="row">
+                <div class = "blue-grey-text">
+                    <h5 class="control-label center"><b>Login Form<hr></b></h5>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12 light-green-text">
-                        <i class="material-icons prefix">email</i>&ensp;
-                        <input id="email" type="email" name='email' class="validate">
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 light-green-text">
-                        <i class="material-icons prefix">lock</i>&ensp;
-                        <input id="password" type="password" name='password' class="validate">
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <div class="row center">
-                    <a id="signup" class="light-green waves-effect waves-light white-text btn-round btn-lg" >SIGN UP</a>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
-    <div class="col-md-5 col-md-offset-2">
-        <div class="card">
-        <div class="row">
-            <div class = "blue-grey-text">
-                <h5 class="control-label center"><b>Login Form<hr></b></h5>
-            </div>
-            <form class="col s12">
-                <div class="row">
+            <form class="col s12" method="post">
+                <div class="row form-group">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">email</i>&ensp;
                         <input id="emailLogin" type="email" name="email" class="validate">
                         <label for="email">Email</label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row form-group">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">lock</i>&ensp;
                         <input id="passwordLogin" type="password" name="password" class="validate">
@@ -67,12 +27,13 @@
                     </div>
                 </div>
                 <div class="row center">
-                    <a id="login" class="blue-grey waves-effect waves-light white-text btn-round btn-lg" >LOGIN</a>
+                   <!-- <a id="login" class="blue-grey waves-effect waves-light white-text btn-round btn-lg" >LOGIN</a>-->
+                    <button type="submit" id='login'  class="blue-grey waves-effect waves-light white-text btn-round btn-lg">Login</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <%include footer%>
