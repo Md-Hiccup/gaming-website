@@ -11,7 +11,7 @@ var session = require('express-session');
 //var mysql = require('mysql');
 
 var routes = require('./routes/index');
-var auth = require('./routes/auth');
+//var auth = require('./routes/auth');
 //var configDb = require('./db.js');
 
 //var users = require('./routes/users');
@@ -51,7 +51,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', routes);
-app.use('/auth' , auth);
+//app.use('/auth' , auth);
 //app.use('/users', users);
 
 // catch 404 and forward to error handler

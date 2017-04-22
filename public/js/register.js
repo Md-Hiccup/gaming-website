@@ -1,6 +1,6 @@
 /**
  * Created by hussain on 9/2/17.
- */
+ * /
 $(document).ready(function() {
     $("#signup").click(function () {
         fname = $("#first_name").val();
@@ -10,7 +10,7 @@ $(document).ready(function() {
         // console.log(fname );
         if (fname !== "" && lname !=="" && email !== "" && pass !== "") {
            // console.log("helloooo");
-            $.post("/auth/signup",
+            $.post("/signup",
                 {
                     first_name: fname,
                     last_name : lname,
@@ -22,7 +22,7 @@ $(document).ready(function() {
                     if (data.status == '200') {
                         alert(data.data);
                         //document.loacation='/';
-                        window.location.href = '/auth/login';
+                        window.location.href = '/login';
                     } else {
                         //alert('error !!!!!'+data.status);
                         window.location.href = '/error';
@@ -35,7 +35,7 @@ $(document).ready(function() {
         email = $('#emailLogin').val();
         pass = $('#passwordLogin').val();
         if(email !=='' && pass !== ''){
-            $.post("/auth/login" ,
+            $.post("/login" ,
                 {
                     emailLogin : email,
                     passwordLogin : pass
@@ -43,9 +43,11 @@ $(document).ready(function() {
                 function(data){
                     if(data.status == '200'){
                       //  alert(' render the home page');
+                        console.log(data.status);
                         window.location.href='/';
                     } else {
                       //  alert('error !!!!!'+data.status);
+                        console.log(data.status);
                         window.location.href = '/error';
                     }
                 });
@@ -70,5 +72,5 @@ $(document).ready(function() {
                     }
                 });
         //}
-    });*/
-});
+    });* /
+});*/

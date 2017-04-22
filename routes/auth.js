@@ -1,6 +1,6 @@
 /**
  * Created by ubuntu on 21/6/16.
- */
+ * /
 //var mysql = require('mysql');
 var conn = require('./db.js');
 //var flash = require('connect-flash');
@@ -8,6 +8,7 @@ var path = require('path');
 var express = require('express');
 var router = express.Router();
 
+/*
 router.get('/login' , function(req, res){
     console.log("in login");
     console.log("headMain" , global.headMain);
@@ -16,7 +17,7 @@ router.get('/login' , function(req, res){
         res.render('login', {headMain: '0'});
     }console.log("headMain : : ",global.headMain);
 });
-
+* /
 router.post('/login' , function(req ,res){
    // sess = req.session;
    // sess.email=req.body.email;
@@ -52,7 +53,7 @@ router.post('/login' , function(req ,res){
          });
  });
 
-
+/*
 router.get('/signup' , function(req, res){
     console.log("in signup");
     console.log("headMain" , global.headMain);
@@ -61,7 +62,7 @@ router.get('/signup' , function(req, res){
         res.render('signup', {headMain: '0'});
     }console.log("headMain : : ",global.headMain);
 });
-
+* /
 router.post('/signup' , function( req , res ){
  //   res.json("Register Page");
       console.log(req.body.first_name+' '+req.body.last_name+' '+req.body.email+ " " +req.body.password);
@@ -78,7 +79,7 @@ router.post('/signup' , function( req , res ){
                 userName = req.body.first_name +" "+req.body.last_name;
                 console.log('successful');
                 //res.end('done');
-                 res.json({"status" : "200" , "data" : "Successfully Singup"});
+                 res.json({"status" : "200" , "data" : "Successfully Signup"});
 
             }
         });
@@ -102,4 +103,4 @@ router.delete('/logout' , function( req , res ){
         });
 });
 */
-module.exports = router ;
+//module.exports = router ;

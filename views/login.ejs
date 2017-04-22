@@ -11,18 +11,18 @@
                 <div class = "blue-grey-text">
                     <h5 class="control-label center"><b>Login Form<hr></b></h5>
                 </div>
-            <form class="col s12" method="post">
+            <form class="col s12" action="/login" method="post">
                 <div class="row form-group">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">email</i>&ensp;
-                        <input id="emailLogin" type="email" name="email" class="validate">
+                        <input id="emailLogin" type="email" name="emailLogin" class="validate">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">lock</i>&ensp;
-                        <input id="passwordLogin" type="password" name="password" class="validate">
+                        <input id="passwordLogin" type="password" name="passwordLogin" class="validate">
                         <label for="password">Password</label>
                     </div>
                 </div>
@@ -31,6 +31,10 @@
                     <button type="submit" id='login'  class="blue-grey waves-effect waves-light white-text btn-round btn-lg">Login</button>
                 </div>
             </form>
+                <hr>
+
+                <p>Need an account? <a href="signup">Signup</a></p>
+                <p>Or go <a href="/">Home</a>.</p>
             </div>
         </div>
     </div>
