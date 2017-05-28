@@ -6,6 +6,11 @@
 <br>
 <div class="container-fluid">
     <div class="col-lg-5 col-lg-offset-3    ">
+        <!-- show any messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+        <% } %>
+
         <div class="card">
             <div class="row">
                 <div class = "ct-green">
@@ -15,26 +20,26 @@
                     <div class="row form-group">
                         <div class="input-field col s6 light-green-text">
                             <i class="material-icons prefix">account_circle</i>&ensp;
-                            <input id="first_name" name="first_name" type="text" class="validate">
+                            <input id="first_name" name="first_name" type="text" class="validate" required>
                             <label for="first_name">First Name</label>
                         </div>
                         <div class="input-field col s6 light-green-text">
                             <i class="material-icons prefix"></i>&ensp;
-                            <input id="last_name" name="last_name" type="text" class="validate">
+                            <input id="last_name" name="last_name" type="text" class="validate" required>
                             <label for="last_name">Last Name</label>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="input-field col s12 light-green-text">
                             <i class="material-icons prefix">email</i>&ensp;
-                            <input id="email" type="email" name='email' class="validate">
+                            <input id="email" type="email" name='email' class="validate" required>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="input-field col s12 light-green-text">
                             <i class="material-icons prefix">lock</i>&ensp;
-                            <input id="password" type="password" name='password' class="validate">
+                            <input id="password" type="password" name='password' class="validate" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -45,8 +50,10 @@
                 </form>
                 <hr>
 
-                <p>Already have an account? <a href="login">Login</a></p>
-                <p>Or go <a href="/">Home</a>.</p>
+                <div class = "row center">
+                    <p>Already have an account? <a href="login">Login</a></p>
+                    <p>Or go <a href="/">Home</a>.</p>
+                </div>
             </div>
         </div>
     </div>

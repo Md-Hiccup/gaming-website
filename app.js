@@ -7,10 +7,10 @@ var bodyParser = require('body-parser');
 var app = express();
 var flash = require('connect-flash');
 var session = require('express-session');
-//var passport = require('passport');
+var passport = require('passport');
+var env = require('dotenv').load();
 //var mysql = require('mysql');
 
-var routes = require('./routes/index');
 //var auth = require('./routes/auth');
 //var configDb = require('./db.js');
 
@@ -47,12 +47,31 @@ app.use(session({
  // duration: 30 * 60 * 1000,
  // activeDuration: 5 * 60 * 1000
 }));
+app.use(passport.initialize());
+app.use(passport.session());   // persistent login sessions
 
 app.use(express.static(path.join(__dirname, '/public')));
 
+var routes = require('./routes/index')(passport);
 app.use('/', routes);
 //app.use('/auth' , auth);
 //app.use('/users', users);
+
+//Models
+var models = require("./models");
+//Routes
+//var authRoute = require('./routes/index.js')(passport);
+
+//load passport strategies
+require('./config/passport.js')(passport,models.user);
+
+//Sync Database
+models.sequelize.sync().then(function(){
+  console.log('Nice! Database looks fine')
+
+}).catch(function(err){
+  console.log(err,"Something went wrong with the Database Update!")
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,6 +6,11 @@
 <br>
 <div class="container-fluid">
     <div class="col-md-5 col-md-offset-3">
+        <!-- show any messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+        <% } %>
+
         <div class="card">
             <div class="row">
                 <div class = "blue-grey-text">
@@ -15,14 +20,14 @@
                 <div class="row form-group">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">email</i>&ensp;
-                        <input id="emailLogin" type="email" name="emailLogin" class="validate">
+                        <input id="emailLogin" type="email" name="email" class="validate" required>
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="input-field col s12 blue-grey-text">
                         <i class="material-icons prefix">lock</i>&ensp;
-                        <input id="passwordLogin" type="password" name="passwordLogin" class="validate">
+                        <input id="passwordLogin" type="password" name="password" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
@@ -32,9 +37,10 @@
                 </div>
             </form>
                 <hr>
-
-                <p>Need an account? <a href="signup">Signup</a></p>
-                <p>Or go <a href="/">Home</a>.</p>
+                <div class = "row center">
+                    <p>Need an account? <a href="signup">Signup</a></p>
+                    <p>Or go <a href="/">Home</a>.</p>
+                </div>
             </div>
         </div>
     </div>
