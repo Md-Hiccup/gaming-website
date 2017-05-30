@@ -49,10 +49,14 @@ module.exports = function(passport) {
 		console.log("headMain : : ", global.headMain);
 	});
 	router.post('/signup', passport.authenticate('local-signup', {
-			successRedirect: '/',
+			//successRedirect: '/',
 			failureRedirect: '/signup',
 			failureFlash: true
-		}));
+		}),function (req, res){
+				global.headMain = 0;
+				console.log('loggggggiiiiiiiiiinnnnnnnnnnnnnnnnnnn');
+				res.redirect('/');
+	});
 
 	/*
 	 router.post('/signup' , function( req , res ){
@@ -91,10 +95,15 @@ module.exports = function(passport) {
 		console.log("headMain : : ", global.headMain);
 	});
 	router.post('/login', passport.authenticate('local-login', {
-		successRedirect: '/',
+		//successRedirect: '/',
 		failureRedirect: '/login',
 		failureFlash: true
-	}));
+	}),	function (req, res){
+			global.headMain = 0;
+			console.log('loggggggiiiiiiiiiinnnnnnnnnnnnnnnnnnn');
+			res.redirect('/');
+		}
+	);
 	/*router.post('/login' , function(req ,res){
 	 // sess = req.session;
 	 // sess.email=req.body.email;
@@ -139,16 +148,17 @@ module.exports = function(passport) {
 	 			}
 		 }); */
 	router.get('/logout', function (req, res) {
+		global.headMain = 1;
 		req.session.destroy(function (err) {
 			res.redirect('/')
 		});
 		console.log("in logout");
 		console.log("headMain ", global.headMain);
-		if (global.headMain == 0) {
+		/*if (global.headMain == 0) {
 			global.headMain = 1;
 			res.render('index', {headMain: '1'});
 		}
-		console.log("headMain : : ", global.headMain);
+		console.log("headMain : : ", global.headMain);*/
 	});
 	router.get('/imarble', function (req, res) {
 		console.log("in imarble");
