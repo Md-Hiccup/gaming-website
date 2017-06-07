@@ -1,0 +1,16 @@
+To Run the project
+
+1. First install 'nodejs' and 'npm'
+
+2. Go to the directory where the project is stored.
+
+3. Run the command
+        - npm install       // it will install all the dependencies from package.json
+
+4. Set the mysql user and password as 'root'
+
+5. Run the server for site Gamenode
+        -  nodemon app.js
+
+6. and for the game 'where's my buddy' , run
+        -  node server.js phasergame/
