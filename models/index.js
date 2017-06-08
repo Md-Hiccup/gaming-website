@@ -29,4 +29,9 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.user = require('../models/user')(sequelize,Sequelize);
+db.score = require('../models/score')(sequelize,Sequelize);
+db.game = require('../models/game')(sequelize,Sequelize);
+
+
 module.exports = db;

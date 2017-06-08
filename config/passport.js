@@ -52,7 +52,7 @@ module.exports = function(passport,user){
                             return done(null,false);
                         }
                         if(newUser){
-                          //  global.headMain = 1;
+                            console.log("newUser : "+JSON.stringify(newUser));
                             return done(null,newUser);
                         }
                     });
@@ -82,6 +82,7 @@ module.exports = function(passport,user){
                     return done(null, false, req.flash('loginMessage','Incorrect password.'));
                 }
                 var userinfo = user.get();
+                console.log("userinfo : " + JSON.stringify(userinfo));
                 return done(null,userinfo);
             }).catch(function(err){
                 console.log("Error:",err);

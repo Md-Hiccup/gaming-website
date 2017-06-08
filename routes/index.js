@@ -100,7 +100,7 @@ module.exports = function(passport) {
 		failureFlash: true
 	}),	function (req, res){
 			global.headMain = 0;
-			console.log('loggggggiiiiiiiiiinnnnnnnnnnnnnnnnnnn');
+			console.log('loggiiinnnnnnnnnnnnnnnnnnn');
 			res.redirect('/');
 		}
 	);
