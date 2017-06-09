@@ -33,5 +33,9 @@ db.user = require('../models/user')(sequelize,Sequelize);
 db.score = require('../models/score')(sequelize,Sequelize);
 db.game = require('../models/game')(sequelize,Sequelize);
 
+db.user.hasMany(db.score);
+db.score.belongsTo(db.user);
+db.game.hasMany(db.score);
+db.score.belongsTo(db.game);
 
 module.exports = db;

@@ -29,37 +29,45 @@ module.exports = function(passport,user){
             passwordField : 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
-        function(req, email, password, done){
-            var generateHash = function(password) {
+        function(req, email, password, done) {
+            var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
-            User.findOne({where: {email:email}}).then(function(user){
-                if(user)
-                {
-                    return done(null, false, req.flash('signupMessage' , 'That email is already taken'));
+            User.findOne({where: {email: email}}).then(function (user) {
+                if (user) {
+                    return done(null, false, req.flash('signupMessage', 'That email is already taken'));
                 }
-                else
-                {
+                else {
                     var userPassword = generateHash(password);
                     var data =
-                    {   email:email,
-                        password:userPassword,
+                    {
+                        email: email,
+                        password: userPassword,
                         first_name: req.body.first_name,
                         last_name: req.body.last_name
                     };
-                    User.create(data).then(function(newUser,created){
-                        if(!newUser){
-                            return done(null,false);
+                    User.create(data).then(function (newUser, created){
+                        if (!newUser) {
+                            return done(null, false);
                         }
-                        if(newUser){
-                            console.log("newUser : "+JSON.stringify(newUser));
-                            return done(null,newUser);
+                        if (newUser) {
+                            console.log("newUser : " + JSON.stringify(newUser));
+                            return done(null, newUser);
                         }
-                    });
-                }
-            });
-        }
+                    }).catch(function(error) {
+                        console.log("CATCH : " + JSON.stringify(error));
+                        return done(null, false, req.flash('signupMessage','Email is not valid'));
+                        //return done(error);
+                });
+              }
+            }).catch(function(error) {
+                console.log("CATCH : " + JSON.stringify(error));
+                return done(null, false, req.flash('signupMessage','Something went wrong with your Signup'));
+                // return done(error);
+        });
+      }
     ));
+
 
     //LOCAL SIGNIN
     passport.use('local-login', new LocalStrategy(

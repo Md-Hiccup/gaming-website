@@ -18,7 +18,13 @@ module.exports = function(sequelize, Sequelize) {
         updatedAt: false,
 //		classMethods: {
 //		associate: function(models) {
-//			models.User.hasMany(models.user.hasMany(models.), { foreignKey: 'userId' });
+//			User.hasMany(models.Score, {
+//              onDelete : 'cascade',
+//              foreignKey:
+//              { name : 'userId',
+//                allowNull : false
+//                  }
+//              });
         //	},
     });
 
