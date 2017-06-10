@@ -49,16 +49,13 @@ module.exports = function(passport) {
 		console.log("headMain : : ", global.headMain);
 	});
 	router.post('/signup', passport.authenticate('local-signup', {
-			//successRedirect: '/',
-			failureRedirect: '/signup',
-			failureFlash: true
+			failWithError : true,
 		}),function (req, res){
-				global.headMain = 0;
-				userId = req.user.id;
-				console.log(userId+' loggggggiiiiiiiiiinnnnnnnnnnnnnnnnnnn');
-				res.redirect('/');
-	});
-
+				res.json(req.user);
+				res.json({"status" : "200" , "data" : "Successfully Signup"});
+		},function(err, req , res, next ){
+			res.json(err);
+		});
 	/*
 	 router.post('/signup' , function( req , res ){
 	 //   res.json("Register Page");

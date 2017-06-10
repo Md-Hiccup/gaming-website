@@ -35,7 +35,7 @@ module.exports = function(passport,user){
             };
             User.findOne({where: {email: email}}).then(function (user) {
                 if (user) {
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken'));
+                    return done({status : 401 , message : 'email is already taken'});
                 }
                 else {
                     var userPassword = generateHash(password);
@@ -51,19 +51,14 @@ module.exports = function(passport,user){
                             return done(null, false);
                         }
                         if (newUser) {
-                            console.log("newUser : " + JSON.stringify(newUser));
-                            return done(null, newUser);
+                            return done({status : 200 , id : newUser.id , name : newUser.first_name+" "+newUser.last_name});
                         }
                     }).catch(function(error) {
-                        console.log("CATCH : " + JSON.stringify(error));
-                        return done(null, false, req.flash('signupMessage','Email is not valid'));
-                        //return done(error);
+                        return done({status : 401 ,message : 'Email is not valid'});
                 });
               }
             }).catch(function(error) {
-                console.log("CATCH : " + JSON.stringify(error));
-                return done(null, false, req.flash('signupMessage','Something went wrong with your Signup'));
-                // return done(error);
+                return done({status : 401 , message : 'Something went wrong with your Signup'});
         });
       }
     ));
