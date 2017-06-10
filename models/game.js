@@ -4,14 +4,14 @@
 module.exports = function(sequelize, Sequelize) {
 
     var Game = sequelize.define('game', {
-        id: { type: Sequelize.UUID, primaryKey: true, allowNull : false},
+        id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
         name: {type: Sequelize.STRING, notEmpty: true}
     },{
       // freezeTableName: true,
       // tableName: 'Games',
         createdAt: false,
         updatedAt: false,
-        underscored : true
+      //  underscored : true
 //		classMethods: {
 //		associate: function(models) {
 //			(, { foreignKey: 'userId' });

@@ -7,7 +7,7 @@ var session = require('express-session');
 //var conn = require('./db.js');
 var gameNo = 0;
 global.headMain = 1;
-module.exports = function(passport ,db) {
+module.exports = function(passport) {
 
 	router.get('/', function (req, res) {
 		console.log("in index");
