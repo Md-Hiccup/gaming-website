@@ -4,17 +4,18 @@
 module.exports = function(sequelize, Sequelize) {
 
     var Score = sequelize.define('score', {
-        gid: {type: Sequelize.INTEGER},
-        uid: {type: Sequelize.INTEGER},
+        game_id: {type: Sequelize.UUID, allowNull: false},
+        user_id: {type: Sequelize.UUID, allowNull: false},
         score: {type: Sequelize.INTEGER }
     },{
-        freezeTableName: true,
-        tableName: 'Scores',
+      //  freezeTableName: true,
+      //  tableName: 'Scores',
         createdAt: false,
         updatedAt: false,
+        underscored: true
 //		classMethods: {
 //		associate: function(models) {
-//			Score.belongsTo(models.USer,
+//			Score.belongsTo(models.User,
 //              {
 //                  foreignKey: {   allowNull : false }
 //              });

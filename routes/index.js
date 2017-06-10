@@ -5,9 +5,9 @@ var router = express.Router();
 var session = require('express-session');
 //var routes = require('./auth.js');
 //var conn = require('./db.js');
-
+var gameNo = 0;
 global.headMain = 1;
-module.exports = function(passport) {
+module.exports = function(passport ,db) {
 
 	router.get('/', function (req, res) {
 		console.log("in index");
@@ -54,7 +54,8 @@ module.exports = function(passport) {
 			failureFlash: true
 		}),function (req, res){
 				global.headMain = 0;
-				console.log('loggggggiiiiiiiiiinnnnnnnnnnnnnnnnnnn');
+				userId = req.user.id;
+				console.log(userId+' loggggggiiiiiiiiiinnnnnnnnnnnnnnnnnnn');
 				res.redirect('/');
 	});
 
@@ -93,6 +94,7 @@ module.exports = function(passport) {
 			res.render('login', {message: req.flash('loginMessage'),headMain: '0'});
 		}
 		console.log("headMain : : ", global.headMain);
+		console.log("333333333333");
 	});
 	router.post('/login', passport.authenticate('local-login', {
 		//successRedirect: '/',
@@ -100,7 +102,8 @@ module.exports = function(passport) {
 		failureFlash: true
 	}),	function (req, res){
 			global.headMain = 0;
-			console.log('loggiiinnnnnnnnnnnnnnnnnnn');
+			userId = req.user.id;
+			console.log(userId+' loggiiinnnnnnnnnnnnnnnnnnn');
 			res.redirect('/');
 		}
 	);
@@ -160,17 +163,21 @@ module.exports = function(passport) {
 		}
 		console.log("headMain : : ", global.headMain);*/
 	});
-	router.get('/imarble', function (req, res) {
-		console.log("in imarble");
-		res.render('imarble');
-	});
 	router.get('/tictactoe1', function (req, res) {
-		console.log("in tictactoe single");
+		gameNo = 1;
+		console.log(gameNo+" in tictactoe single");
+		console.log(req)
 		res.render('tictactoe1');
 	});
 	router.get('/tictactoe2', function (req, res) {
-		console.log("in tictactoe double");
+		gameNo = 2;
+		console.log(gameNo+" in tictactoe double");
 		res.render('tictactoe2');
+	});
+	router.get('/imarble', function (req, res) {
+		gameNo = 3;
+		console.log(gameNo+" in imarble");
+		res.render('imarble');
 	});
 	/*
 	 router.get('/dashboard' , function(req, res){

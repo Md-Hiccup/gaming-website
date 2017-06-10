@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="cae21af4-9806-46e8-a922-fd2e88324497">
-        <schema name="gameDb" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="cae21af4-9806-46e8-a922-fd2e88324497">
@@ -41,6 +37,7 @@
       </filter>
     </filter-list>
     <filter-list connection-id="cae21af4-9806-46e8-a922-fd2e88324497" dataset="gameDb.userLogin" active-filter-id="EMPTY_FILTER" />
+    <filter-list connection-id="cae21af4-9806-46e8-a922-fd2e88324497" dataset="gameDb.users" active-filter-id="" />
     <filter-list connection-id="cae21af4-9806-46e8-a922-fd2e88324497" dataset="gameDb.gameBoard" active-filter-id="EMPTY_FILTER" />
     <filter-list connection-id="cae21af4-9806-46e8-a922-fd2e88324497" dataset="gameDb.userSignup" active-filter-id="EMPTY_FILTER" />
     <filter-list connection-id="cae21af4-9806-46e8-a922-fd2e88324497" dataset="gameDb.scoreBoard" active-filter-id="" />

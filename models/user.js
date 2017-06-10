@@ -2,7 +2,7 @@
 module.exports = function(sequelize, Sequelize) {
 
     var User = sequelize.define('user', {
-        id: {autoIncrement: true, primaryKey: true, type: Sequelize.INTEGER},
+        id: {type: Sequelize.UUID, primaryKey: true, allowNull : false},
         first_name: {type: Sequelize.STRING, notEmpty: true},
         last_name: {type: Sequelize.STRING, notEmpty: true},
      //   username: {type: Sequelize.TEXT},
@@ -10,12 +10,13 @@ module.exports = function(sequelize, Sequelize) {
         email: {type: Sequelize.STRING, validate: {isEmail: true}},
         password: {type: Sequelize.STRING, allowNull: false},
         //last_login: {type: Sequelize.DATE},
-        status: {type: Sequelize.ENUM('active', 'inactive'), defaultValue: 'active'}
+        status: {type: Sequelize.ENUM, values:['active', 'inactive'], defaultValue: 'active'}
     },{
-        freezeTableName: true,
-        tableName: 'Users',
-        createdAt: false,
-        updatedAt: false,
+       // freezeTableName: true,
+      //  tableName: 'Users',
+        createdAt: true,
+        updatedAt: true,
+        underscored : true
 //		classMethods: {
 //		associate: function(models) {
 //			User.hasMany(models.Score, {
