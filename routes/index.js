@@ -52,7 +52,6 @@ module.exports = function(passport) {
 			failWithError : true,
 		}),function (req, res){
 				res.json(req.user);
-				res.json({"status" : "200" , "data" : "Successfully Signup"});
 		},function(err, req , res, next ){
 			res.json(err);
 		});
@@ -94,16 +93,13 @@ module.exports = function(passport) {
 		console.log("333333333333");
 	});
 	router.post('/login', passport.authenticate('local-login', {
-		//successRedirect: '/',
-		failureRedirect: '/login',
-		failureFlash: true
+		failWithError : true
 	}),	function (req, res){
-			global.headMain = 0;
-			userId = req.user.id;
-			console.log(userId+' loggiiinnnnnnnnnnnnnnnnnnn');
-			res.redirect('/');
-		}
-	);
+			res.json(req.user);
+		},
+		function(err, req, res, next) {
+			res.json(err);
+	});
 	/*router.post('/login' , function(req ,res){
 	 // sess = req.session;
 	 // sess.email=req.body.email;

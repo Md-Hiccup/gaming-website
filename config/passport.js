@@ -79,17 +79,15 @@ module.exports = function(passport,user){
             }
             User.findOne({ where : { email: email}}).then(function (user) {
                 if (!user) {
-                    return done(null, false, req.flash('loginMessage','Email does not exist' ));
+                    return done({status: 401 , message :'Email does not exist' });
                 }
                 if (!isValidPassword(user.password,password)) {
-                    return done(null, false, req.flash('loginMessage','Incorrect password.'));
+                    return done({status : 401 , message : 'Incorrect password.'});
                 }
                 var userinfo = user.get();
-                console.log("userinfo : " + JSON.stringify(userinfo));
-                return done(null,userinfo);
+                return done({status : 200 , id : userinfo.id , name : userinfo.first_name+" "+ userinfo.last_name});
             }).catch(function(err){
-                console.log("Error:",err);
-                return done(null, false, req.flash('loginMessage','Something went wrong with your Signin'));
+                return done({status : 401 , message:'Something went wrong with your Signin'});
             });
         }
     ));
