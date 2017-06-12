@@ -4,8 +4,8 @@
 module.exports = function(sequelize, Sequelize) {
 
     var Score = sequelize.define('score', {
-        game_id: {type: Sequelize.INTEGER, allowNull: false},
-        user_id: {type: Sequelize.INTEGER, allowNull: false},
+        gameId: {type: Sequelize.INTEGER, allowNull: false},
+        userId: {type: Sequelize.INTEGER, allowNull: false},
         score: {type: Sequelize.INTEGER }
     },{
       //  freezeTableName: true,

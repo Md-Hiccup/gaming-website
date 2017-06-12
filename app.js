@@ -78,7 +78,6 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');         //  res.status(404).send('Sorry can't find that');
   err.status = 404;
   next(err);
-
 });
 
 // error handlers

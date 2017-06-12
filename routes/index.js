@@ -5,6 +5,7 @@ var router = express.Router();
 var session = require('express-session');
 //var routes = require('./auth.js');
 //var conn = require('./db.js');
+var db = require('../models/index');
 var gameNo = 0;
 global.headMain = 1;
 module.exports = function(passport) {
@@ -172,12 +173,21 @@ module.exports = function(passport) {
 		console.log(gameNo+" in imarble");
 		res.render('imarble');
 	});
-	/*
-	 router.get('/dashboard' , function(req, res){
-	 console.log("in dashboard");
-	 res.render('dashboard');
-	 });
+	router.post('/addgame', function(req, res){
+		db.game.bulkCreate([
+			{name : 'Tictactoe Single Player'},
+			{name : 'Tictactoe Double Player'},
+			{name : 'IMarbles'}
+		]).then(function() {
+			return db.game.findAll();
+		//	console.log(db.game.name);
+		}).then(function (games) {
+			//console.log(JSON.stringify(games));
+			res.json(games);
+		})
+	});
 
+	/*
 	 router.get('/home' , function (req ,res ){
 	 //	res.sendFile(path.join(__dirname,'../','public','html','home.html'));
 	 console.log("in home");
