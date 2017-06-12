@@ -175,9 +175,9 @@ module.exports = function(passport) {
 	});
 	router.post('/addgame', function(req, res){
 		db.game.bulkCreate([
-			{name : 'Tictactoe Single Player'},
-			{name : 'Tictactoe Double Player'},
-			{name : 'IMarbles'}
+			{name : 'Tictactoe Single Player' ,userId : 1},
+			{name : 'Tictactoe Double Player' ,userId : 2 },
+			{name : 'IMarbles', userId : 2}
 		]).then(function() {
 			return db.game.findAll();
 		//	console.log(db.game.name);
@@ -187,6 +187,30 @@ module.exports = function(passport) {
 		})
 	});
 
+	router.post('/userdetail' , function(req, res){
+		db.user.findAll({
+			include : [{
+				model : db.game,
+				where :{ userId : req.body.uid},
+				include : [{
+					model : db.score,
+					where : { gameId : req.body.gid }
+				}]
+			}]
+		}).then(function (results) {
+			res.json(results);
+		})
+	});
+
+	 router.post('/addscore' , function(req, res){
+		 db.score.bulkCreate([
+			 {score : 10 ,gameId : 1},
+			 {score : 20 ,gameId : 2},
+			 {score : 30 ,gameId : 3}
+		 ]).then(function (results) {
+			 res.json(results);
+		 })
+	 });
 	/*
 	 router.get('/home' , function (req ,res ){
 	 //	res.sendFile(path.join(__dirname,'../','public','html','home.html'));
