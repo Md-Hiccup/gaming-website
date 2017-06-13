@@ -14,3 +14,16 @@ To Run the project
 
 6. and for the game 'where's my buddy' , run
         -  node server.js phasergame/
+
+7. Adding Sequelize-cli
+    i) first initialize the sequelize by
+            - sequelize init            // it will create config/config.json , migration and seeders folder
+
+    ii) create model User
+            - sequelize model:create --name User --attributes "name:string"     // it create models/user.js and migration/201713065412-create-user.js
+
+    iii) migrate the database
+            - sequelize db:migrate
+
+    iv) cretae dummy value from seeders
+            - sequelize db:seed:all

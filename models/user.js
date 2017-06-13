@@ -1,34 +1,18 @@
-
-module.exports = function(sequelize, Sequelize) {
-
-    var User = sequelize.define('user', {
-        id: { autoIncrement: true ,type: Sequelize.INTEGER, primaryKey: true },
-        first_name: {type: Sequelize.STRING, notEmpty: true},
-        last_name: {type: Sequelize.STRING, notEmpty: true},
-     //   username: {type: Sequelize.TEXT},
-     //   about: {type: Sequelize.TEXT},
-        email: {type: Sequelize.STRING, validate: {isEmail: true}},
-        password: {type: Sequelize.STRING, allowNull: false},
-        //last_login: {type: Sequelize.DATE},
-        status: {type: Sequelize.ENUM('active', 'inactive'), defaultValue: 'active'}
-    },{
-       // freezeTableName: true,
-      //  tableName: 'Users',
-        createdAt: false,
-        updatedAt: false
-      //  underscored : true
-//		classMethods: {
-//		associate: function(models) {
-//			User.hasMany(models.Score, {
-//              onDelete : 'cascade',
-//              foreignKey:
-//              { name : 'userId',
-//                allowNull : false
-//                  }
-//              });
-        //	},
-    });
-
-    return User;
-
-}
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define('User', {
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    status : DataTypes.ENUM('active', 'inactive')
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        User.hasMany(models.Game)
+      }
+    }
+  });
+  return User;
+};

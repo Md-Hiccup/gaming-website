@@ -1,26 +1,14 @@
-/**
- * Created by hussain on 8/6/17.
- */
-module.exports = function(sequelize, Sequelize) {
-
-    var Score = sequelize.define('score', {
-      //  gameId: {type: Sequelize.INTEGER, allowNull: false},
-      // userId: {type: Sequelize.INTEGER, allowNull: false},
-        score: {type: Sequelize.INTEGER , defaultValue : 0}
-    },{
-      //  freezeTableName: true,
-      //  tableName: 'Scores',
-        createdAt: false,
-        updatedAt: false,
-    //    underscored: true
-//		classMethods: {
-//		associate: function(models) {
-//			Score.belongsTo(models.User,
-//              {
-//                  foreignKey: {   allowNull : false }
-//              });
-        //	},
-    });
-
-    return Score;
-}
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  var Score = sequelize.define('Score', {
+    score: DataTypes.INTEGER
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+        Score.belongsTo(models.Game);
+      }
+    }
+  });
+  return Score;
+};

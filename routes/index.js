@@ -5,7 +5,7 @@ var router = express.Router();
 var session = require('express-session');
 //var routes = require('./auth.js');
 //var conn = require('./db.js');
-var db = require('../models/index');
+var db = require('../models');
 var gameNo = 0;
 global.headMain = 1;
 module.exports = function(passport) {
@@ -174,12 +174,12 @@ module.exports = function(passport) {
 		res.render('imarble');
 	});
 	router.post('/addgame', function(req, res){
-		db.game.bulkCreate([
-			{name : 'Tictactoe Single Player' ,userId : 1},
-			{name : 'Tictactoe Double Player' ,userId : 2 },
-			{name : 'IMarbles', userId : 2}
+		db.Game.bulkCreate([
+			{name : 'Tictactoe Single Player' },
+			{name : 'Tictactoe Double Player' },
+			{name : 'IMarbles'}
 		]).then(function() {
-			return db.game.findAll();
+			return db.Game.findAll();
 		//	console.log(db.game.name);
 		}).then(function (games) {
 			//console.log(JSON.stringify(games));
@@ -188,13 +188,13 @@ module.exports = function(passport) {
 	});
 
 	router.post('/userdetail' , function(req, res){
-		db.user.findAll({
+		db.User.findAll({
 			include : [{
-				model : db.game,
-				where :{ userId : req.body.uid},
+				model : db.Game,
+				where :{ UserId : req.body.uid},
 				include : [{
-					model : db.score,
-					where : { gameId : req.body.gid }
+					model : db.Score,
+					where : { GameId : req.body.gid }
 				}]
 			}]
 		}).then(function (results) {
@@ -203,7 +203,7 @@ module.exports = function(passport) {
 	});
 
 	 router.post('/addscore' , function(req, res){
-		 db.score.bulkCreate([
+		 db.Score.findAll([
 			 {score : 10 ,gameId : 1},
 			 {score : 20 ,gameId : 2},
 			 {score : 30 ,gameId : 3}
