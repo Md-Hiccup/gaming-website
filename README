@@ -27,3 +27,14 @@ To Run the project
 
     iv) cretae dummy value from seeders
             - sequelize db:seed:all
+
+MAIN STEPS TO RUN SERVER AND SEQUELIZE
+
+        1-  run server
+                - nodemon app
+        2-  run seeder for dummy values
+                - sequelize db:seed:all
+        3-  run api
+                - /addgame
+                - /addscore
+                - /userdetail   // with gid=1 , uid=5

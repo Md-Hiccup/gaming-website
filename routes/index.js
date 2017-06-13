@@ -175,9 +175,9 @@ module.exports = function(passport) {
 	});
 	router.post('/addgame', function(req, res){
 		db.Game.bulkCreate([
-			{name : 'Tictactoe Single Player' },
-			{name : 'Tictactoe Double Player' },
-			{name : 'IMarbles'}
+			{name : 'Cricket' ,createdAt: new Date(), updatedAt: new Date() ,UserId : 2},
+			{name : 'Fifa' ,createdAt: new Date(), updatedAt: new Date() ,UserId : 1 },
+			{name : 'Tennis' ,createdAt: new Date(), updatedAt: new Date() ,UserId : 1}
 		]).then(function() {
 			return db.Game.findAll();
 		//	console.log(db.game.name);
@@ -203,11 +203,14 @@ module.exports = function(passport) {
 	});
 
 	 router.post('/addscore' , function(req, res){
-		 db.Score.findAll([
-			 {score : 10 ,gameId : 1},
-			 {score : 20 ,gameId : 2},
-			 {score : 30 ,gameId : 3}
-		 ]).then(function (results) {
+		 db.Score.bulkCreate([
+			 {score : 10 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 4},
+			 {score : 20 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 5},
+			 {score : 30 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 4},
+			 {score : 40 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 6},
+		 ]).then(function() {
+			 return db.Score.findAll();
+		 }).then(function (results) {
 			 res.json(results);
 		 })
 	 });

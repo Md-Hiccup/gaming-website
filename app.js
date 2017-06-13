@@ -65,8 +65,8 @@ var models = require("./models");
 //load passport strategies
 require('./config/passport.js')(passport,models.user);
 
-//Sync Database
-models.sequelize.sync({force : true}).then(function(){
+//Sync Database   [ for forcefully delete previous value in DB use .sync({force:true}.then(..) ]
+models.sequelize.sync({force:true}).then(function(){
   console.log('Nice! Database looks fine')
 
 }).catch(function(err){
