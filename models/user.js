@@ -1,11 +1,12 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: { type : DataTypes.STRING, validate : {isEmail : true}},
     password: DataTypes.STRING,
-    status : DataTypes.ENUM('active', 'inactive')
+    status : { type : DataTypes.ENUM('active', 'inactive') , defaultValue: 'active'}
   }, {
     classMethods: {
       associate: function(models) {

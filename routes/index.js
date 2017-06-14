@@ -50,11 +50,13 @@ module.exports = function(passport) {
 		console.log("headMain : : ", global.headMain);
 	});
 	router.post('/signup', passport.authenticate('local-signup', {
-			failWithError : true,
-		}),function (req, res){
-				res.json(req.user);
-		},function(err, req , res, next ){
-			res.json(err);
+			failWithError : true
+		})/*,function (req, res, next){
+			console.log('User-signup');
+			res.json(req);
+		}*/,function(user, req, res, next){
+			console.log('UserSignup  : '+ JSON.stringify(user));
+			res.json(user);
 		});
 	/*
 	 router.post('/signup' , function( req , res ){
@@ -94,13 +96,14 @@ module.exports = function(passport) {
 		console.log("333333333333");
 	});
 	router.post('/login', passport.authenticate('local-login', {
-		failWithError : true
-	}),	function (req, res){
-			res.json(req.user);
-		},
-		function(err, req, res, next) {
-			res.json(err);
-	});
+			failWithError : true
+		})/*,function (req, res){
+			console.log("User Login);
+			res.json(req);
+		}*/,function(user, req, res, next) {
+			console.log("UserLogin :"+JSON.stringify(user));
+			res.json(user);
+		});
 	/*router.post('/login' , function(req ,res){
 	 // sess = req.session;
 	 // sess.email=req.body.email;
