@@ -51,10 +51,7 @@ module.exports = function(passport) {
 	});
 	router.post('/signup', passport.authenticate('local-signup', {
 			failWithError : true
-		})/*,function (req, res, next){
-			console.log('User-signup');
-			res.json(req);
-		}*/,function(user, req, res, next){
+		}),function(user, req, res, next){
 			console.log('UserSignup  : '+ JSON.stringify(user));
 			res.json(user);
 		});
@@ -93,14 +90,10 @@ module.exports = function(passport) {
 			res.render('login', {message: req.flash('loginMessage'),headMain: '0'});
 		}
 		console.log("headMain : : ", global.headMain);
-		console.log("333333333333");
 	});
 	router.post('/login', passport.authenticate('local-login', {
 			failWithError : true
-		})/*,function (req, res){
-			console.log("User Login);
-			res.json(req);
-		}*/,function(user, req, res, next) {
+		}),function(user, req, res, next) {
 			console.log("UserLogin :"+JSON.stringify(user));
 			res.json(user);
 		});

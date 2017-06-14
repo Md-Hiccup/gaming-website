@@ -9,12 +9,10 @@ module.exports = function(passport, user){
     var LocalStrategy = require('passport-local').Strategy;
 
     passport.serializeUser(function(user, done) {
-        console.log("passport-serializeUser "+JSON.stringify(user));
         done(null, user.id);
     });
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        console.log("passport-deserializeUser "+id);
         User.findById(id).then(function(user) {
             if(user){
                 done(null, user.get());
@@ -35,14 +33,11 @@ module.exports = function(passport, user){
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
-            console.log("need to check user email"+email);
             User.findOne({where: {email: email}}).then(function (user) {
                 if (user) {
-                    console.log("email-is-already-taken");
                     return done({status : 401 , message : 'email is already taken'});
                 }
                 else {
-                    console.log("newUser-is-created");
                     var userPassword = generateHash(password);
                     var data =
                     {
@@ -51,13 +46,11 @@ module.exports = function(passport, user){
                         first_name: req.body.first_name,
                         last_name: req.body.last_name
                     };
-                    console.log("DATA : "+JSON.stringify(data));
                     User.create(data).then(function (newUser, created){
                         if (!newUser) {
                             return done(null, false);
                         }
                         if (newUser) {
-                            console.log("created-user-detail");
                             return done({status : 200 , id : newUser.id , name : newUser.first_name+" "+newUser.last_name});
                         }
                     }).catch(function(error) {
