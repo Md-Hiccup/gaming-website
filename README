@@ -19,8 +19,9 @@ To Run the project
     i) first initialize the sequelize by
             - sequelize init            // it will create config/config.json , migration and seeders folder
 
-    ii) create model User
-            - sequelize model:create --name User --attributes "name:string"     // it create models/user.js and migration/201713065412-create-user.js
+    ii) create model User (it already done, not needed)
+            - sequelize model:create --name Users --attributes "name:string"
+                // it create models/user.js and migration/201713065412-create-user.js
 
     iii) migrate the database
             - sequelize db:migrate
@@ -35,6 +36,7 @@ MAIN STEPS TO RUN SERVER AND SEQUELIZE
         2-  run seeder for dummy values
                 - sequelize db:seed:all
         3-  run api
-                - /addgame
-                - /addscore
-                - /userdetail   // with gid=1 , uid=5
+                - /addgame      // adding dummy games
+                - /addscore     // adding dummy scores
+                - /userdetail   // it shows userDetail with gid=1 , uid=5
+

@@ -6,6 +6,7 @@ var session = require('express-session');
 //var routes = require('./auth.js');
 //var conn = require('./db.js');
 var db = require('../models');
+
 var gameNo = 0;
 global.headMain = 1;
 module.exports = function(passport) {
@@ -50,38 +51,38 @@ module.exports = function(passport) {
 		console.log("headMain : : ", global.headMain);
 	});
 	router.post('/signup', passport.authenticate('local-signup', {
-			failWithError : true
-		}),function(user, req, res, next){
-			console.log('UserSignup  : '+ JSON.stringify(user));
-			res.json(user);
-		});
+		failWithError : true
+	}),function(user, req, res, next){
+		console.log('UserSignup  : '+ JSON.stringify(user));
+		res.json(user);
+	});
 	/*
 	 router.post('/signup' , function( req , res ){
 	 //   res.json("Register Page");
-	 	console.log(req.body.first_name+' '+req.body.last_name+' '+req.body.email+ " " +req.body.password);
-	 	if(req.body.first_name!=='' && req.body.last_name!=='' && req.body.email!=='' && req.body.password!==''){
-	 		conn.query("insert into userSignup ( firstname , lastname , email , password ) values ( ? , ? , ? , ? )" ,
-	 		[ req.body.first_name , req.body.last_name , req.body.email , req.body.password ] ,
-	 		function(err , rows){
-	 			//console.log(rows.length) ;
-	 			if(err){
-	 				console.log('Failed ' + err);
-	 				res.json({"status" : err.status , "data" : err.message , "stack": err.stack});
-	 				}
-	 			else {
-	 				global.headMain = 1;
-	 				userName = req.body.first_name +" "+req.body.last_name;
-	 				console.log('successful');
-	 				//res.end('done');
-	 				//res.json({"status" : "200" , "data" : "Successfully Signup"});
-					 res.redirect('/login');
-	 				}
-	 			});
-	 		} else {
-	 		console.log("signup error");
-	 		res.redirect('/signup');
-		}
- 	});*/
+	 console.log(req.body.first_name+' '+req.body.last_name+' '+req.body.email+ " " +req.body.password);
+	 if(req.body.first_name!=='' && req.body.last_name!=='' && req.body.email!=='' && req.body.password!==''){
+	 conn.query("insert into userSignup ( firstname , lastname , email , password ) values ( ? , ? , ? , ? )" ,
+	 [ req.body.first_name , req.body.last_name , req.body.email , req.body.password ] ,
+	 function(err , rows){
+	 //console.log(rows.length) ;
+	 if(err){
+	 console.log('Failed ' + err);
+	 res.json({"status" : err.status , "data" : err.message , "stack": err.stack});
+	 }
+	 else {
+	 global.headMain = 1;
+	 userName = req.body.first_name +" "+req.body.last_name;
+	 console.log('successful');
+	 //res.end('done');
+	 //res.json({"status" : "200" , "data" : "Successfully Signup"});
+	 res.redirect('/login');
+	 }
+	 });
+	 } else {
+	 console.log("signup error");
+	 res.redirect('/signup');
+	 }
+	 });*/
 	router.get('/login', function (req, res) {
 		console.log("in login");
 		console.log("headMain", global.headMain);
@@ -92,11 +93,24 @@ module.exports = function(passport) {
 		console.log("headMain : : ", global.headMain);
 	});
 	router.post('/login', passport.authenticate('local-login', {
-			failWithError : true
-		}),function(user, req, res, next) {
-			console.log("UserLogin :"+JSON.stringify(user));
-			res.json(user);
-		});
+		failWithError : true
+	}),function(user, req, res, next) {
+		console.log("UserLogin :"+JSON.stringify(user));
+		res.json(user);
+	});
+
+	router.get('/google', passport.authenticate('google', { scope: [ 'profile', 'email' ]}));
+
+	router.get('/google/callback', passport.authenticate('google', {
+		//successRedirect : '/blog',
+		failureRedirect : '/login'
+		}), function (req, res) {
+			global.headMain = 0;
+			res.redirect('/');
+		//res.send("Google callback")
+		}
+	);
+
 	/*router.post('/login' , function(req ,res){
 	 // sess = req.session;
 	 // sess.email=req.body.email;
@@ -104,42 +118,42 @@ module.exports = function(passport) {
 	 // routes.headMain = '1' ;
 	 console.log("Authentication "+req.body.emailLogin+" "+global.headMain);
 	 if(req.body.emailLogin!=='' && req.body.passwordLogin!==''){
-		 conn.query("Select firstname , lastname , Email , Password from userSignup where email = ? AND password = ? ",
-	 		[ req.body.emailLogin ,req.body.passwordLogin ],
-	 		function (err , rows) {
-	 			console.log(rows.length) ;   //console.log(rows[0].Email) ;
-	 			if( err )
-	 			{
-	 				console.log(err);
-	 				res.json({"status" : err.status , "data" : err.message});
-	 			}
-	 		else {
+	 conn.query("Select firstname , lastname , Email , Password from userSignup where email = ? AND password = ? ",
+	 [ req.body.emailLogin ,req.body.passwordLogin ],
+	 function (err , rows) {
+	 console.log(rows.length) ;   //console.log(rows[0].Email) ;
+	 if( err )
+	 {
+	 console.log(err);
+	 res.json({"status" : err.status , "data" : err.message});
+	 }
+	 else {
 
-	 				if (req.body.emailLogin == rows[0].Email) {
-	 					console.log('email check');
-	 					if (req.body.passwordLogin == rows[0].Password) {
-	 						global.headMain = 0;
-	 						console.log('password check');
-	 						userName = rows[0].firstname + " " + rows[0].lastname;
-	 				conn.query("insert into userLogin (email , password) values (?, ?)", [req.body.emailLogin, req.body.passwordLogin]);
-				 // console.log("dddd " +global.headMain);
-	 			//res.json({"status": "200", "data": "Login successful"});
-	 					res.redirect('/');
-	 			} else {
-	 				res.redirect('/login');
-	 				res.json({'status': '500', 'data': 'wrong password'});
-	 				}
-	 			}
-	 		else {
-	 			res.json({"status": "500", "data": "Login failed"});
-	 				}
-	 			}
-	 		});
-	 		}else {
-	 			console.log("login error");
-	 			res.redirect('/login');
-	 			}
-		 }); */
+	 if (req.body.emailLogin == rows[0].Email) {
+	 console.log('email check');
+	 if (req.body.passwordLogin == rows[0].Password) {
+	 global.headMain = 0;
+	 console.log('password check');
+	 userName = rows[0].firstname + " " + rows[0].lastname;
+	 conn.query("insert into userLogin (email , password) values (?, ?)", [req.body.emailLogin, req.body.passwordLogin]);
+	 // console.log("dddd " +global.headMain);
+	 //res.json({"status": "200", "data": "Login successful"});
+	 res.redirect('/');
+	 } else {
+	 res.redirect('/login');
+	 res.json({'status': '500', 'data': 'wrong password'});
+	 }
+	 }
+	 else {
+	 res.json({"status": "500", "data": "Login failed"});
+	 }
+	 }
+	 });
+	 }else {
+	 console.log("login error");
+	 res.redirect('/login');
+	 }
+	 }); */
 	router.get('/logout', function (req, res) {
 		global.headMain = 1;
 		req.session.destroy(function (err) {
@@ -148,10 +162,10 @@ module.exports = function(passport) {
 		console.log("in logout");
 		console.log("headMain ", global.headMain);
 		/*if (global.headMain == 0) {
-			global.headMain = 1;
-			res.render('index', {headMain: '1'});
-		}
-		console.log("headMain : : ", global.headMain);*/
+		 global.headMain = 1;
+		 res.render('index', {headMain: '1'});
+		 }
+		 console.log("headMain : : ", global.headMain);*/
 	});
 	router.get('/tictactoe1', function (req, res) {
 		gameNo = 1;
@@ -176,7 +190,7 @@ module.exports = function(passport) {
 			{name : 'Tennis' ,createdAt: new Date(), updatedAt: new Date() ,UserId : 1}
 		]).then(function() {
 			return db.Game.findAll();
-		//	console.log(db.game.name);
+			//	console.log(db.game.name);
 		}).then(function (games) {
 			//console.log(JSON.stringify(games));
 			res.json(games);
@@ -198,18 +212,18 @@ module.exports = function(passport) {
 		})
 	});
 
-	 router.post('/addscore' , function(req, res){
-		 db.Score.bulkCreate([
-			 {score : 10 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 4},
-			 {score : 20 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 5},
-			 {score : 30 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 4},
-			 {score : 40 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 6},
-		 ]).then(function() {
-			 return db.Score.findAll();
-		 }).then(function (results) {
-			 res.json(results);
-		 })
-	 });
+	router.post('/addscore' , function(req, res){
+		db.Score.bulkCreate([
+			{score : 10 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 4},
+			{score : 20 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 5},
+			{score : 30 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 4},
+			{score : 40 ,createdAt: new Date(), updatedAt: new Date() ,GameId : 6},
+		]).then(function() {
+			return db.Score.findAll();
+		}).then(function (results) {
+			res.json(results);
+		})
+	});
 	/*
 	 router.get('/home' , function (req ,res ){
 	 //	res.sendFile(path.join(__dirname,'../','public','html','home.html'));

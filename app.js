@@ -63,7 +63,7 @@ var models = require("./models");
 //var authRoute = require('./routes/index.js')(passport);
 
 //load passport strategies
-require('./config/passport.js')(passport, models.User);
+require('./config/passport.js')(passport, models.User, models.GoogleUser);
 
 //Sync Database   [ for forcefully delete previous value in DB use .sync({force:true}.then(..) ]
 models.sequelize.sync({force: true}).then(function(){
@@ -105,8 +105,8 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(3005, function () {
+  console.log('Example app listening on port 3005!');
 });
 
 
