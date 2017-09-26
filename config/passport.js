@@ -106,11 +106,9 @@ module.exports = function(passport, user , google){
                 //user is not logged in yet
                 if(!req.user) {
                     console.log('what happen bro 404 hahaha');
-                    Google.findOne({where : {'id': profile.id}}).then(function (err, user) {
+                    Google.findOne({where : {'id': profile.id}}).then(function ( user) {
                         console.log(req.user);
                         console.log(profile.id);
-                        if (err)
-                            return done(err);
                         if (user) {
                             console.log("(((((((((((((");
                             console.log(user);

@@ -8,6 +8,9 @@ To Run the project
         - npm install       // it will install all the dependencies from package.json
 
 4. Set the mysql user and password as 'root'
+	1> To install mysql 
+		-sudo apt-get update
+		-sudo apt-get install mysql-server
 
 5. Run the server for site Gamenode
         -  nodemon app.js
